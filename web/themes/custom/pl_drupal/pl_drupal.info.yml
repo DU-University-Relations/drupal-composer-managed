@@ -28,3 +28,4 @@ components:
       - source/_patterns/05-pages/01-content-page
 dependencies:
   - drupal:components
+  - drupal:twig_field_value
