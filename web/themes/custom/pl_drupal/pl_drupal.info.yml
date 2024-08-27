@@ -27,4 +27,4 @@ components:
       - source/_patterns/05-pages
       - source/_patterns/05-pages/01-content-page
 dependencies:
-  - drupal:component
+  - drupal:components
