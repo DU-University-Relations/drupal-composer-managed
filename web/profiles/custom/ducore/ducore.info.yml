@@ -33,6 +33,7 @@ install:
   - pantheon_advanced_page_cache
   - paragraphs
   - pathauto
+  - r4032login
   - rabbit_hole
   - redirect
   - simple_sitemap
