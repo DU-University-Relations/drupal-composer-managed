@@ -9,19 +9,27 @@ dependencies:
     - entity_reference_revisions
     - file
     - node
+    - paragraphs
     - path
     - redirect
     - simple_sitemap
     - system
+    - toolbar
+    - webform
 id: site_admin
 label: 'Site Admin'
 weight: -6
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access any webform configuration'
   - 'access block library'
   - 'access content overview'
   - 'access files overview'
+  - 'access own webform configuration'
+  - 'access toolbar'
+  - 'access webform overview'
+  - 'access webform submission user'
   - 'administer block content'
   - 'administer blocks'
   - 'administer entity clone'
@@ -32,5 +40,8 @@ permissions:
   - 'administer url aliases'
   - 'break content lock'
   - 'clone node entity'
+  - 'create url aliases'
+  - 'create webform'
   - 'delete any file'
   - 'delete orphan revisions'
+  - 'view unpublished paragraphs'
