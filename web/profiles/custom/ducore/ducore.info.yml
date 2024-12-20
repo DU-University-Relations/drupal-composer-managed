@@ -115,6 +115,7 @@ dependencies:
   - media
   - slick
   - token_filter
+  - quick_node_clone
 
 themes:
   - pl_drupal
