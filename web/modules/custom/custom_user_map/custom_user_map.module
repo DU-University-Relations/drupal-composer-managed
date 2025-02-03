@@ -1,0 +1,50 @@
+<?php
+
+use Drupal\node\NodeInterface;
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_node_presave().
+ *
+ * This hook runs before a node is saved, allowing us to attach the external UID.
+ */
+function custom_user_map_node_presave(NodeInterface $node) {
+  // if ($node->bundle() !== 'article') {
+  //   return;
+  // }
+
+  // Get the current user’s email.
+  $current_user = \Drupal::currentUser();
+  $user_email = $current_user->getEmail();
+  
+  // continue if an email exists.
+  if (empty($user_email)) {
+    return;
+  }
+  
+  try {
+    // Connect to the external database
+    $external_db = Database::getConnection('default', 'cms_du_edu');
+
+    // Query the external user table.
+    $query = $external_db->select('users_field_data', 'u')
+      ->fields('u', ['uid'])
+      ->condition('u.mail', $user_email, '=')
+      ->range(0, 1);
+    $external_uid = $query->execute()->fetchField();
+
+    if ($external_uid) {
+      // Set the value of the mapped UID field.
+      $node->set('field_mapped_uid', $external_uid);
+    }
+    else {
+      // clear the field or log a message if no match is found.
+      $node->set('field_mapped_uid', NULL);
+      \Drupal::logger('custom_user_map')->warning('No external UID found for email: @email', ['@email' => $user_email]);
+    }
+  }
+  catch (\Exception $e) {
+    // Log any exceptions.
+    \Drupal::logger('custom_user_map')->error('Error fetching external UID: @message', ['@message' => $e->getMessage()]);
+  }
+}

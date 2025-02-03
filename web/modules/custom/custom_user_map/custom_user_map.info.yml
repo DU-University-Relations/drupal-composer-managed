@@ -1,0 +1,6 @@
+name: Custom User Map
+type: module
+description: 'Maps the external user UID based on email to content via hook_node_presave.'
+package: Custom
+core_version_requirement: ^10
+version: 1.0
