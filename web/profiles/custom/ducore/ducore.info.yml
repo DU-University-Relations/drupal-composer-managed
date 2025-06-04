@@ -70,6 +70,7 @@ install:
   - editoria11y
   - menu_block
   - anchor_link
+  - image_style_generate
 
 # Required modules. These cannot be uninstalled.
 # Note that any dependencies of the modules listed here will be installed automatically.
