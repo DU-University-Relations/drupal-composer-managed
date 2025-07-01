@@ -124,6 +124,39 @@ function ducore_after_install_finished(array &$install_state) {
 }
 
 /**
+ * Remove all roles and block users who are no longer employed by DU as of 7/1/2025
+ */
+function ducore_update_9005() {
+  // mix of local and SSO enabled accounts
+  $users_to_remove = array(
+    'charles.r.jones',
+    'maximilian.fleischer',
+    'max@rehabcreative.com',
+    'ops@rehabcreative.com',
+    'alex.martinez',
+    'chidimma.ogbonna',
+    'jessica.kibble'
+  );
+
+  // Loop through each usern and, even if it exists, overwrite it.
+  foreach ($users_to_remove as $username) {
+    if(user_load_by_name($username)){
+      $roles = $user->getRoles();
+      foreach ($roles as $role) {
+        $user->removeRole($role);
+      }
+      $user->block();
+      $user->save();
+    } else {
+      $message = "Did not find " . $username . " on this site";
+      \Drupal::logger('ducore')->error($message);
+    } 
+  }
+}
+
+/// D10 UPDATES START HERE ///
+
+/**
  * Enable Key and Pantheon Secrets modules on existing installs
  */
 function ducore_update_9501() {
@@ -555,3 +588,4 @@ function ducore_update_9518() {
     \Drupal::messenger()->addMessage('View configuration for user_json not found.');
   }
 }
+
