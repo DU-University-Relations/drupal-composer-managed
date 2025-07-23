@@ -33,7 +33,7 @@
         "drupal/honeypot": "^2.2",
         "drupal/libraries": "^4.0",
         "drupal/link_attributes": "^2.1",
-        "drupal/linkit": "^6.1",
+        "drupal/linkit": "6.1.6",
         "drupal/metatag": "^2.0",
         "drupal/pantheon_advanced_page_cache": "^2.2",
         "drupal/paragraphs": "^1.18",
