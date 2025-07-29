@@ -1,5 +1,5 @@
 {
-    "_hash": "2ab0e8c95b9d5d862c7fa8d28a7cf029221ac4c20009edc3226a77c5eb277c76",
+    "_hash": "433c73b1d4ec960b587ef06cc8cde3143e425eeba6597f4e0da7750a290299db",
     "patches": {
         "drupal/webform": [
             {
@@ -19,6 +19,18 @@
                 "description": "Deprecated function getException() in RedirectSubscriber",
                 "url": "https://www.drupal.org/files/issues/2023-04-04/url_redirect-deprecated-function.patch",
                 "sha256": "fd3925d6457e06b30b2d98ab1d11c9e94d8f581fb95d59853cdda3c5a84adf31",
+                "depth": 1,
+                "extra": {
+                    "provenance": "patches-file:upstream-configuration/patches.json"
+                }
+            }
+        ],
+        "drupal/lightning_core": [
+            {
+                "package": "drupal/lightning_core",
+                "description": "Declaration of Drupal lightning_core ConfigEntityDescriptionTrait::getDescription() must be compatible",
+                "url": "https://www.drupal.org/files/issues/2024-11-04/3408813-lightning_core-fatal_error-27.patch",
+                "sha256": "066d84adada74791fb54f33a95d4f1d3e7cf39f50705e6974afeb5faffe3c855",
                 "depth": 1,
                 "extra": {
                     "provenance": "patches-file:upstream-configuration/patches.json"
