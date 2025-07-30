@@ -140,7 +140,8 @@ function ducore_update_9005() {
 
   // Loop through each usern and, even if it exists, overwrite it.
   foreach ($users_to_remove as $username) {
-    if(user_load_by_name($username)){
+    // Does this user exist on this instance?
+    if($user = user_load_by_name($username)){
       $roles = $user->getRoles();
       foreach ($roles as $role) {
         $user->removeRole($role);
@@ -589,3 +590,10 @@ function ducore_update_9518() {
   }
 }
 
+/**
+ * Reruns 9005 to Remove all roles and block users who are no longer employed by DU as of 7/1/2025
+ */
+function ducore_update_9519() {
+  ducore_update_9005();
+}
+ 
