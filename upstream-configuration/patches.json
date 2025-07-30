@@ -5,6 +5,9 @@
         },
         "drupal/url_redirect": {
             "Deprecated function getException() in RedirectSubscriber": "https://www.drupal.org/files/issues/2023-04-04/url_redirect-deprecated-function.patch"
+        },
+        "drupal/lightning_core": {
+            "Declaration of Drupal lightning_core ConfigEntityDescriptionTrait::getDescription() must be compatible": "https://www.drupal.org/files/issues/2024-11-04/3408813-lightning_core-fatal_error-27.patch"
         }
     }
 }
