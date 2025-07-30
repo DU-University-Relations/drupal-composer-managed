@@ -573,7 +573,7 @@ function ducore_update_9517() {
  * Enables views_data_export and imports view for Users JSON
  */
 function ducore_update_9518() {
-  \Drupal::service('module_installer')->install('views_data_export');
+  \Drupal::service('module_installer')->install(array('views_data_export'));
 
   $view_name = 'user_json';
   $view_config = \Drupal::service('config.storage.sync')->read('views.view.' . $view_name);
