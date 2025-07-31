@@ -1,0 +1,7 @@
+name: DU Demo Content
+description: Installs Single Content Sync and imports a demo basic page.
+type: module
+core_version_requirement: ^10
+package: DU
+dependencies:
+  - drupal:single_content_sync

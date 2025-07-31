@@ -1,0 +1,395 @@
+uuid: 2808143e-7765-4133-abce-b2099b3304c4
+entity_type: node
+bundle: page
+base_fields:
+  title: 'Most Common Components'
+  status: true
+  langcode: en
+  created: '1753923065'
+  author: kreynen@gmail.com
+  revision_log_message: null
+  revision_uid: '1'
+  url: null
+custom_fields:
+  body: null
+  field_alternative_h1: null
+  field_footer_ctas: null
+  field_hero_media_header: null
+  field_hide_footer_cta_region:
+    -
+      value: '0'
+  field_hide_subnav_block:
+    -
+      value: '0'
+  field_meta_tags:
+    title: '[current-page:title] | [site:name]'
+  field_page_content:
+    -
+      uuid: 033a3b22-6478-4c1a-b014-b27efe1835a9
+      entity_type: paragraph
+      bundle: body_copy
+      base_fields:
+        status: true
+        langcode: en
+        created: '1753923318'
+        behavior_settings: {  }
+      custom_fields:
+        field_copy_image: null
+        field_copy_image_placement: null
+        field_copy_style:
+          -
+            value: medium
+        field_heading:
+          -
+            value: 'Page Content Area (h3)'
+        field_paragraph_ref: null
+        field_subhead:
+          -
+            value: 'subhead (h4)'
+    -
+      uuid: 717bd2eb-5e73-41f6-b6ce-326b906f43b2
+      entity_type: paragraph
+      bundle: body_copy
+      base_fields:
+        status: true
+        langcode: en
+        created: '1753923372'
+        behavior_settings: {  }
+      custom_fields:
+        field_copy_image: null
+        field_copy_image_placement: null
+        field_copy_style:
+          -
+            value: medium
+        field_heading:
+          -
+            value: 'EXPANDING LIST'
+        field_paragraph_ref:
+          -
+            uuid: 8266f8ee-faab-4400-9911-66c6af362d1b
+            entity_type: paragraph
+            bundle: expanding_list
+            base_fields:
+              status: true
+              langcode: en
+              created: '1753923385'
+              behavior_settings: {  }
+            custom_fields:
+              field_exp_list_item:
+                -
+                  uuid: 28741da0-bdc2-4697-a523-dcff92c14341
+                  entity_type: paragraph
+                  bundle: two_value_text
+                  base_fields:
+                    status: true
+                    langcode: en
+                    created: '1753923385'
+                    behavior_settings: {  }
+                  custom_fields:
+                    field_body_text:
+                      -
+                        value: '<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>'
+                        format: rich_text
+                        embed_entities: {  }
+                    field_title:
+                      -
+                        value: 'Expanding List 1'
+                -
+                  uuid: ba9d4bb1-7fc8-49aa-b3bf-647433854df4
+                  entity_type: paragraph
+                  bundle: two_value_text
+                  base_fields:
+                    status: true
+                    langcode: en
+                    created: '1753923398'
+                    behavior_settings: {  }
+                  custom_fields:
+                    field_body_text:
+                      -
+                        value: '<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>'
+                        format: rich_text
+                        embed_entities: {  }
+                    field_title:
+                      -
+                        value: 'Expanding List 2'
+          -
+            uuid: c9e47365-cfc1-4643-85fa-e9c0df92dfa2
+            entity_type: paragraph
+            bundle: webform
+            base_fields:
+              status: true
+              langcode: en
+              created: '1753923449'
+              behavior_settings: {  }
+            custom_fields:
+              field_webform_reference: null
+        field_subhead: null
+    -
+      uuid: f3155c06-f364-4d77-87ce-f027efc1a4bf
+      entity_type: paragraph
+      bundle: cards
+      base_fields:
+        status: true
+        langcode: en
+        created: '1753923493'
+        behavior_settings: {  }
+      custom_fields:
+        field_card_alignment:
+          -
+            value: left
+        field_cards:
+          -
+            uuid: ced92ce3-6b52-41d8-a8d1-f3435fd6a0ba
+            entity_type: paragraph
+            bundle: card
+            base_fields:
+              status: true
+              langcode: en
+              created: '1753923493'
+              behavior_settings: {  }
+            custom_fields:
+              field_card_image: null
+              field_card_type:
+                -
+                  value: no-image
+              field_paragraph_ref:
+                -
+                  uuid: cb418cb3-6f3f-4e93-b9e9-1ec9a5757c0e
+                  entity_type: paragraph
+                  bundle: body_text
+                  base_fields:
+                    status: true
+                    langcode: en
+                    created: '1753923551'
+                    behavior_settings: {  }
+                  custom_fields:
+                    field_body_text:
+                      -
+                        value: '<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;</span></p>'
+                        format: rich_text
+                        embed_entities: {  }
+              field_title:
+                -
+                  value: 'Card 1'
+          -
+            uuid: 0f7014cb-6bb8-4aeb-8a5e-05865fd4ce91
+            entity_type: paragraph
+            bundle: card
+            base_fields:
+              status: true
+              langcode: en
+              created: '1753923510'
+              behavior_settings: {  }
+            custom_fields:
+              field_card_image: null
+              field_card_type:
+                -
+                  value: no-image
+              field_paragraph_ref:
+                -
+                  uuid: 76ce9716-82f8-457d-b006-e484116f6099
+                  entity_type: paragraph
+                  bundle: body_text
+                  base_fields:
+                    status: true
+                    langcode: en
+                    created: '1753923559'
+                    behavior_settings: {  }
+                  custom_fields:
+                    field_body_text:
+                      -
+                        value: '<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&nbsp;</span></p>'
+                        format: rich_text
+                        embed_entities: {  }
+              field_title:
+                -
+                  value: 'Card 2'
+          -
+            uuid: aa99ee07-1e6b-4c90-b768-10afb3b8e854
+            entity_type: paragraph
+            bundle: card
+            base_fields:
+              status: true
+              langcode: en
+              created: '1753923518'
+              behavior_settings: {  }
+            custom_fields:
+              field_card_image: null
+              field_card_type:
+                -
+                  value: no-image
+              field_paragraph_ref:
+                -
+                  uuid: c3f99716-bbcf-47a6-ba55-dde3b5020892
+                  entity_type: paragraph
+                  bundle: body_text
+                  base_fields:
+                    status: true
+                    langcode: en
+                    created: '1753923564'
+                    behavior_settings: {  }
+                  custom_fields:
+                    field_body_text:
+                      -
+                        value: '<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&nbsp;</span></p>'
+                        format: rich_text
+                        embed_entities: {  }
+              field_title:
+                -
+                  value: 'Card 3'
+        field_heading:
+          -
+            value: CARDS
+  field_page_overview:
+    -
+      uuid: 71e39408-66b6-4465-a42b-d35223301424
+      entity_type: paragraph
+      bundle: body_text
+      base_fields:
+        status: true
+        langcode: en
+        created: '1753923083'
+        behavior_settings: {  }
+      custom_fields:
+        field_body_text:
+          -
+            value: '<h2>Page Overview Section</h2>'
+            format: rich_text
+            embed_entities: {  }
+    -
+      uuid: 46eedbec-4c11-4b89-8b2c-5dc1b5fce36b
+      entity_type: paragraph
+      bundle: body_text
+      base_fields:
+        status: true
+        langcode: en
+        created: '1753923102'
+        behavior_settings: {  }
+      custom_fields:
+        field_body_text:
+          -
+            value: '<p>Donec eget condimentum odio. Aliquam in lorem ligula. Nulla at odio lacus. Praesent euismod metus turpis, vel mollis lorem ornare sit amet. Sed ultrices a metus eu tincidunt. Etiam hendrerit, velit sit amet aliquam commodo, justo dolor placerat purus, eu rutrum dui neque et justo. Vivamus porta neque pharetra auctor tincidunt. Mauris felis lorem, consequat in tempus sed, pharetra id sapien. Suspendisse cursus posuere massa. In vitae aliquam augue. Mauris ac tortor id ligula efficitur vulputate. Morbi vehicula volutpat viverra. Mauris malesuada risus sit amet eleifend convallis.</p>'
+            format: rich_text
+            embed_entities: {  }
+    -
+      uuid: 517bd2dc-cf30-42d3-9e59-773c5681145d
+      entity_type: paragraph
+      bundle: subhead
+      base_fields:
+        status: true
+        langcode: en
+        created: '1753923116'
+        behavior_settings: {  }
+      custom_fields:
+        field_title:
+          -
+            value: 'List of Links'
+    -
+      uuid: 365abcf2-3ebc-446c-bc4f-4ed2493718d5
+      entity_type: paragraph
+      bundle: list_of_links
+      base_fields:
+        status: true
+        langcode: en
+        created: '1753923155'
+        behavior_settings: {  }
+      custom_fields:
+        field_list_of_links:
+          -
+            uri: 'https://du.edu'
+            title: 'Section 1'
+            options:
+              attributes: {  }
+          -
+            uri: 'https://du.edu'
+            title: 'Section 2'
+            options:
+              attributes: {  }
+        field_list_of_links_layout:
+          -
+            value: two-col
+        field_list_of_links_style:
+          -
+            value: list-of-links
+    -
+      uuid: 04ab77c7-9e64-4247-ae6d-18e955a8ae47
+      entity_type: paragraph
+      bundle: cta_inline
+      base_fields:
+        status: true
+        langcode: en
+        created: '1753923190'
+        behavior_settings: {  }
+      custom_fields:
+        field_cta_inline_headline:
+          -
+            value: 'CTA Inline Headline'
+        field_link:
+          -
+            uri: 'https://du.edu'
+            title: 'Apply now'
+            options:
+              attributes:
+                class:
+                  - ''
+    -
+      uuid: 7cc4e7e5-64de-4961-a3ff-533283ea6b13
+      entity_type: paragraph
+      bundle: body_text
+      base_fields:
+        status: true
+        langcode: en
+        created: '1753923243'
+        behavior_settings: {  }
+      custom_fields:
+        field_body_text:
+          -
+            value: '<h3>Icon Lists (h3)</h3>'
+            format: rich_text
+            embed_entities: {  }
+    -
+      uuid: 1e360fab-57a7-4391-8166-831722411db6
+      entity_type: paragraph
+      bundle: icon_list
+      base_fields:
+        status: true
+        langcode: en
+        created: '1753923256'
+        behavior_settings: {  }
+      custom_fields:
+        field_icon_list_items:
+          -
+            uuid: 59186a82-33fa-4269-8e04-447fe5fdc900
+            entity_type: paragraph
+            bundle: icon_list_item
+            base_fields:
+              status: true
+              langcode: en
+              created: '1753923256'
+              behavior_settings: {  }
+            custom_fields: {  }
+          -
+            uuid: 16d2d0ed-b781-4cdb-a865-8c93330cbe40
+            entity_type: paragraph
+            bundle: icon_list_item
+            base_fields:
+              status: true
+              langcode: en
+              created: '1753923272'
+              behavior_settings: {  }
+            custom_fields: {  }
+          -
+            uuid: 35484953-ed16-46b9-bcc9-77b40e2f456b
+            entity_type: paragraph
+            bundle: icon_list_item
+            base_fields:
+              status: true
+              langcode: en
+              created: '1753923274'
+              behavior_settings: {  }
+            custom_fields: {  }
+        field_icon_list_items_small:
+          -
+            value: '0'
+  field_social_media_bar: null
+  field_unit: null
