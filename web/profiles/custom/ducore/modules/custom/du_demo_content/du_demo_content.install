@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Implements hook_install().
+ * Installs .yml files located in /content
+ */
+function du_demo_content_install() {
+  if (\Drupal::moduleHandler()->moduleExists('single_content_sync')) {
+    $importer = \Drupal::service('single_content_sync.importer');
+
+    $module_handler = \Drupal::service('extension.list.module');
+    $content_dir = DRUPAL_ROOT . '/' . $module_handler->getPath('du_demo_content') . '/content';
+
+    foreach (glob($content_dir . '/*.yml') as $file_path) {
+      try {
+        $importer->importFromFile($file_path);
+        \Drupal::logger('du_demo_content')->notice('Imported demo content from %file', ['%file' => $file_path]);
+      }
+      catch (\Exception $e) {
+        \Drupal::logger('du_demo_content')->error('Failed importing %file: %message', [
+          '%file' => $file_path,
+          '%message' => $e->getMessage(),
+        ]);
+      }
+    }
+  }
+}
+
+
+/**
+ * Implements hook_uninstall().
+ * Uninstalls .yml files located in /content
+ */
+function du_demo_content_uninstall() {
+  $module_handler = \Drupal::service('extension.list.module');
+  $content_dir = DRUPAL_ROOT . '/' . $module_handler->getPath('du_demo_content') . '/content';
+
+  foreach (glob($content_dir . '/*.yml') as $file_path) {
+    $yaml = \Symfony\Component\Yaml\Yaml::parseFile($file_path);
+    $uuid = $yaml['uuid'] ?? NULL;
+
+    if ($uuid) {
+      $storage = \Drupal::entityTypeManager()->getStorage('node');
+      $nodes = $storage->loadByProperties(['uuid' => $uuid]);
+      foreach ($nodes as $node) {
+        $node->delete();
+        \Drupal::logger('du_demo_content')->notice('Deleted demo page with UUID @uuid on uninstall.', ['@uuid' => $uuid]);
+      }
+    }
+  }
+}
