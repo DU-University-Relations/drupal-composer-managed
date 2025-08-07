@@ -135,12 +135,6 @@ settings:
       unit_carousel:
         weight: 119
         enabled: true
-      unit_hero_media_:
-        weight: 68
-        enabled: false
-      unit_slide:
-        weight: 69
-        enabled: false
       webform:
         weight: 122
         enabled: false
