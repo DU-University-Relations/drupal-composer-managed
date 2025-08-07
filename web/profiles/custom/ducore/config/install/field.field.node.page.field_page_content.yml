@@ -96,9 +96,6 @@ settings:
       icon_list:
         weight: 81
         enabled: false
-      icon_list_item:
-        weight: 54
-        enabled: false
       image_with_caption:
         weight: 83
         enabled: false
