@@ -9,7 +9,6 @@ dependencies:
     - paragraphs.paragraphs_type.category_menu
     - paragraphs.paragraphs_type.cta
     - paragraphs.paragraphs_type.enhanced_expanding_list
-    - paragraphs.paragraphs_type.event_list
     - paragraphs.paragraphs_type.named_anchor
     - paragraphs.paragraphs_type.stories
     - paragraphs.paragraphs_type.testimonials_spotlight
@@ -38,7 +37,6 @@ settings:
       cta: cta
       stories: stories
       enhanced_expanding_list: enhanced_expanding_list
-      event_list: event_list
       named_anchor: named_anchor
       testimonials_spotlight: testimonials_spotlight
       unit_carousel: unit_carousel
@@ -82,7 +80,7 @@ settings:
         enabled: false
       event_list:
         weight: 55
-        enabled: true
+        enabled: false
       expanding_list:
         weight: 56
         enabled: false
@@ -98,6 +96,9 @@ settings:
       icon_list:
         weight: 81
         enabled: false
+      icon_list_item:
+        weight: 54
+        enabled: false
       image_with_caption:
         weight: 83
         enabled: false
@@ -109,9 +110,6 @@ settings:
         enabled: false
       named_anchor:
         weight: 91
-        enabled: true
-      reusable_content:
-        weight: 107
         enabled: true
       show_hide_toggle:
         weight: 108
@@ -140,6 +138,12 @@ settings:
       unit_carousel:
         weight: 119
         enabled: true
+      unit_hero_media_:
+        weight: 68
+        enabled: false
+      unit_slide:
+        weight: 69
+        enabled: false
       webform:
         weight: 122
         enabled: false
