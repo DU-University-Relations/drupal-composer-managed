@@ -6,8 +6,6 @@ dependencies:
     - entity_browser.browser.browse_files_modal
     - filter.format.rich_text
     - node.type.page
-    - taxonomy.vocabulary.event_audiences
-    - taxonomy.vocabulary.event_types
     - taxonomy.vocabulary.unit
   module:
     - block
@@ -154,8 +152,6 @@ permissions:
   - 'clone webform_submission entity'
   - 'clone workflow entity'
   - 'create page content'
-  - 'create terms in event_audiences'
-  - 'create terms in event_types'
   - 'create terms in unit'
   - 'create url aliases'
   - 'create webform'
@@ -170,11 +166,7 @@ permissions:
   - 'delete own webform'
   - 'delete own webform submission'
   - 'delete page revisions'
-  - 'delete term revisions in event_audiences'
-  - 'delete term revisions in event_types'
   - 'delete term revisions in unit'
-  - 'delete terms in event_audiences'
-  - 'delete terms in event_types'
   - 'delete terms in unit'
   - 'edit any page content'
   - 'edit any webform'
@@ -184,8 +176,6 @@ permissions:
   - 'edit own webform'
   - 'edit own webform submission'
   - 'edit role expire default duration'
-  - 'edit terms in event_audiences'
-  - 'edit terms in event_types'
   - 'edit terms in unit'
   - 'edit users role expire'
   - 'edit webform assets'
@@ -194,8 +184,6 @@ permissions:
   - 'revert all revisions'
   - 'revert all taxonomy revisions'
   - 'revert page revisions'
-  - 'revert term revisions in event_audiences'
-  - 'revert term revisions in event_types'
   - 'revert term revisions in unit'
   - 'take_ownership_on_clone content_moderation_state entity'
   - 'take_ownership_on_clone file entity'
@@ -210,8 +198,6 @@ permissions:
   - 'view own unpublished content'
   - 'view own webform submission'
   - 'view page revisions'
-  - 'view term revisions in event_audiences'
-  - 'view term revisions in event_types'
   - 'view term revisions in unit'
   - 'view the administration theme'
   - 'view unpublished paragraphs'

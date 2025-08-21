@@ -70,6 +70,7 @@ install:
   - editoria11y
   - menu_block
   - anchor_link
+  - sendgrid_integration
 
 # Required modules. These cannot be uninstalled.
 # Note that any dependencies of the modules listed here will be installed automatically.
@@ -134,6 +135,7 @@ dependencies:
   - ckeditor_media_embed
   - crop
   - anchor_link
+  - sendgrid_integration
 
 themes:
   - du_bootstrap
