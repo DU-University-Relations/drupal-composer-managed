@@ -50,3 +50,14 @@ function ducore_user_presave(UserInterface $user) {
   // @TODO - Remove user if no longer in original array 
 }
 
+/**
+ * Implements hook_google_tag_snippets_alter().
+ */
+function ducore_google_tag_snippets_alter(array &$snippets) {
+
+  if (!defined('PANTHEON_ENVIRONMENT') || $_ENV['PANTHEON_ENVIRONMENT'] != 'test' || $_ENV['PANTHEON_ENVIRONMENT'] != 'live') {
+    $snippets['script'] = ' ';
+    unset($snippets['noscript']);
+    unset($snippets['data_layer']);
+  }
+}
