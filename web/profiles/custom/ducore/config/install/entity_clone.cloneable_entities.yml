@@ -1,23 +1,23 @@
 cloneable_entities:
   - config_split
   - path_alias
-  - menu
   - action
-  - user_role
+  - menu
   - user
-  - entity_form_mode
-  - entity_view_display
-  - entity_form_display
-  - entity_view_mode
+  - user_role
   - base_field_override
   - date_format
+  - entity_view_mode
+  - entity_form_mode
+  - entity_form_display
+  - entity_view_display
   - environment_indicator
   - block
   - field_storage_config
   - field_config
   - filter_format
-  - block_content
   - block_content_type
+  - block_content
   - node_type
   - node
   - file
@@ -27,25 +27,23 @@ cloneable_entities:
   - taxonomy_term
   - taxonomy_vocabulary
   - image_style
-  - media_type
   - media
+  - media_type
   - view
   - menu_link_content
   - responsive_image_style
-  - paragraph
   - paragraphs_type
+  - paragraph
   - entity_browser
   - embed_button
   - entity_embed_fake_entity
-  - webform_submission
   - webform_options
+  - webform_submission
   - webform
   - key
   - key_config_override
   - simple_sitemap
   - simple_sitemap_type
-  - crop
-  - crop_type
   - linkit_profile
   - metatag_defaults
   - pathauto_pattern
@@ -53,3 +51,12 @@ cloneable_entities:
   - redirect
   - slick
   - url_redirect
+  - feeds_subscription
+  - feeds_feed
+  - feeds_feed_type
+  - crop
+  - crop_type
+  - styleguide_pattern
+  - asset_injector_css
+  - asset_injector_js
+  - rest_resource_config

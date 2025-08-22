@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.unit_carousel.field_unit_carousel_title
     - paragraphs.paragraphs_type.unit_carousel
   module:
+    - content_moderation
     - paragraphs
 id: paragraph.unit_carousel.default
 targetEntityType: paragraph

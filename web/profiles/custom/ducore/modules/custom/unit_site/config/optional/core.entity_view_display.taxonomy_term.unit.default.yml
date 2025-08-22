@@ -2,12 +2,17 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.unit.field_25_live_id
+    - field.field.taxonomy_term.unit.field_banner_shortcode
+    - field.field.taxonomy_term.unit.field_faculty_api_id
     - field.field.taxonomy_term.unit.field_unit_abbreviation
     - field.field.taxonomy_term.unit.field_unit_address1
     - field.field.taxonomy_term.unit.field_unit_address2
     - field.field.taxonomy_term.unit.field_unit_division
     - field.field.taxonomy_term.unit.field_unit_email
+    - field.field.taxonomy_term.unit.field_unit_faculty_api_dept
     - field.field.taxonomy_term.unit.field_unit_fax
+    - field.field.taxonomy_term.unit.field_unit_footer_link
     - field.field.taxonomy_term.unit.field_unit_logo
     - field.field.taxonomy_term.unit.field_unit_office
     - field.field.taxonomy_term.unit.field_unit_phone
@@ -18,9 +23,9 @@ dependencies:
     - taxonomy.vocabulary.unit
   module:
     - entity_reference_revisions
-    - image
     - link
     - options
+    - svg_image
     - text
 id: taxonomy_term.unit.default
 targetEntityType: taxonomy_term

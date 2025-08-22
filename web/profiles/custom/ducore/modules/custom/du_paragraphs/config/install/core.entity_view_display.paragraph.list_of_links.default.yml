@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.list_of_links.field_list_of_links_style
     - paragraphs.paragraphs_type.list_of_links
   module:
+    - du_site
     - link
     - options
 id: paragraph.list_of_links.default
@@ -23,7 +24,9 @@ content:
       url_plain: false
       rel: '0'
       target: '0'
-    third_party_settings: {  }
+    third_party_settings:
+      du_site:
+        list_of_links: ''
     weight: 0
     region: content
   field_list_of_links_layout:

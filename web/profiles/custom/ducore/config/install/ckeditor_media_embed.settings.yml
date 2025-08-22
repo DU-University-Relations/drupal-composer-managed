@@ -1,4 +1,1 @@
-embed_provider: 'http://ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}'
-ckeditor_version: ''
-plugins_installed_version: ''
-plugins_version_installed: 44.0.0
+embed_provider: '//noembed.com/embed?url={url}&callback={callback}'

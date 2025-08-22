@@ -6,8 +6,6 @@ dependencies:
     - field.storage.block_content.field_unit_audience_nav_links
   module:
     - link
-_core:
-  default_config_hash: CpvYbuGAZINslNSFglZCTXjSEBP1uXNHLOG0Wg3419Q
 id: block_content.unit_audience_nav.field_unit_audience_nav_links
 field_name: field_unit_audience_nav_links
 entity_type: block_content

@@ -21,7 +21,6 @@ settings:
       - alignment
       - '|'
       - file_browser
-      - MediaEmbed
       - '|'
       - anchor
       - blockQuote

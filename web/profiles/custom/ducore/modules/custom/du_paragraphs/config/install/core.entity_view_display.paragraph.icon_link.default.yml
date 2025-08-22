@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.icon_link.field_icon_link_link
     - paragraphs.paragraphs_type.icon_link
   module:
+    - du_site
     - link
     - options
 id: paragraph.icon_link.default
@@ -29,7 +30,9 @@ content:
       url_plain: false
       rel: '0'
       target: '0'
-    third_party_settings: {  }
+    third_party_settings:
+      du_site:
+        list_of_links: ''
     weight: 1
     region: content
 hidden:

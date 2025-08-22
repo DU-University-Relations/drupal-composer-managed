@@ -4,7 +4,6 @@ dependencies:
   config:
     - field.storage.paragraph.field_unit_carousel_slide
     - paragraphs.paragraphs_type.unit_carousel
-    - paragraphs.paragraphs_type.unit_slide
   module:
     - entity_reference_revisions
 id: paragraph.unit_carousel.field_unit_carousel_slide
