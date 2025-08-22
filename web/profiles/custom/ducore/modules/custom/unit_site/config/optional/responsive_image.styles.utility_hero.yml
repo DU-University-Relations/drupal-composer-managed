@@ -7,7 +7,7 @@ dependencies:
     - image.style.utility_hero_image_450_x_300
     - image.style.utility_hero_image_768_x_300
   theme:
-    - pl_drupal
+    - du_bootstrap
 id: utility_hero
 label: 'Utility hero'
 image_style_mappings:

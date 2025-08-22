@@ -6,6 +6,8 @@ dependencies:
     - field.field.block_content.unit_audience_nav.field_unit_audience_nav_links
   module:
     - link
+_core:
+  default_config_hash: JbEvxSeniiKESOREonea_-eBb0qG3G7DQnmHdtDG_qU
 id: block_content.unit_audience_nav.default
 targetEntityType: block_content
 bundle: unit_audience_nav

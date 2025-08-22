@@ -1,4 +1,3 @@
-uuid: null
 langcode: en
 status: true
 dependencies:
@@ -11,6 +10,7 @@ dependencies:
     - field.field.paragraph.hero_media.field_image_type
     - field.field.paragraph.hero_media.field_subhead
     - paragraphs.paragraphs_type.hero_media
+    - responsive_image.styles.hero_image
   module:
     - file
     - responsive_image

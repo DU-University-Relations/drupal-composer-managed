@@ -6,8 +6,6 @@ dependencies:
     - field.field.paragraph.icon_link.field_icon_link_link
     - paragraphs.paragraphs_type.icon_link
   module:
-    - content_moderation
-    - datetime
     - link_attributes
 id: paragraph.icon_link.default
 targetEntityType: paragraph

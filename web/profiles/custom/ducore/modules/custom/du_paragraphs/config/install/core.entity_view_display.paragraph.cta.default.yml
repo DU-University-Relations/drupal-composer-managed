@@ -1,4 +1,3 @@
-uuid: null
 langcode: en
 status: true
 dependencies:
@@ -10,6 +9,7 @@ dependencies:
     - field.field.paragraph.cta.field_link
     - field.field.paragraph.cta.field_subhead_long
     - paragraphs.paragraphs_type.cta
+    - responsive_image.styles.cta_module_narrow
   module:
     - link
     - options

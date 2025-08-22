@@ -1,8 +1,10 @@
-uuid: null
 langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.browse_files_modal
+    - field.field.paragraph.unit_hero_media_.field_hero_image
+    - field.field.paragraph.unit_hero_media_.field_hero_video
     - field.field.paragraph.unit_hero_media_.field_unit_hero_caption
     - field.field.paragraph.unit_hero_media_.field_unit_hero_display
     - field.field.paragraph.unit_hero_media_.field_unit_hero_embed
@@ -11,6 +13,7 @@ dependencies:
     - field.field.paragraph.unit_hero_media_.field_unit_image_type
     - paragraphs.paragraphs_type.unit_hero_media_
   module:
+    - entity_browser
     - link_attributes
     - text
 id: paragraph.unit_hero_media_.default

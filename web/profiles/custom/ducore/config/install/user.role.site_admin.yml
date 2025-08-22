@@ -1,15 +1,11 @@
-uuid: null
 langcode: en
 status: true
 dependencies:
   config:
     - entity_browser.browser.browse_files
     - entity_browser.browser.browse_files_modal
-    - filter.format.full_html
     - filter.format.rich_text
     - node.type.page
-    - taxonomy.vocabulary.event_audiences
-    - taxonomy.vocabulary.event_types
     - taxonomy.vocabulary.unit
   module:
     - block
@@ -38,7 +34,6 @@ dependencies:
     - responsive_image
     - role_expire
     - simple_sitemap
-    - simple_styleguide
     - system
     - taxonomy
     - toolbar
@@ -97,7 +92,6 @@ permissions:
   - 'administer role expire'
   - 'administer site configuration'
   - 'administer sitemap settings'
-  - 'administer style guide'
   - 'administer taxonomy'
   - 'administer taxonomy_term display'
   - 'administer taxonomy_term fields'
@@ -158,8 +152,6 @@ permissions:
   - 'clone webform_submission entity'
   - 'clone workflow entity'
   - 'create page content'
-  - 'create terms in event_audiences'
-  - 'create terms in event_types'
   - 'create terms in unit'
   - 'create url aliases'
   - 'create webform'
@@ -174,11 +166,7 @@ permissions:
   - 'delete own webform'
   - 'delete own webform submission'
   - 'delete page revisions'
-  - 'delete term revisions in event_audiences'
-  - 'delete term revisions in event_types'
   - 'delete term revisions in unit'
-  - 'delete terms in event_audiences'
-  - 'delete terms in event_types'
   - 'delete terms in unit'
   - 'edit any page content'
   - 'edit any webform'
@@ -188,8 +176,6 @@ permissions:
   - 'edit own webform'
   - 'edit own webform submission'
   - 'edit role expire default duration'
-  - 'edit terms in event_audiences'
-  - 'edit terms in event_types'
   - 'edit terms in unit'
   - 'edit users role expire'
   - 'edit webform assets'
@@ -198,13 +184,10 @@ permissions:
   - 'revert all revisions'
   - 'revert all taxonomy revisions'
   - 'revert page revisions'
-  - 'revert term revisions in event_audiences'
-  - 'revert term revisions in event_types'
   - 'revert term revisions in unit'
   - 'take_ownership_on_clone content_moderation_state entity'
   - 'take_ownership_on_clone file entity'
   - 'take_ownership_on_clone node entity'
-  - 'use text format full_html'
   - 'use text format rich_text'
   - 'view all revisions'
   - 'view all taxonomy revisions'
@@ -215,8 +198,6 @@ permissions:
   - 'view own unpublished content'
   - 'view own webform submission'
   - 'view page revisions'
-  - 'view term revisions in event_audiences'
-  - 'view term revisions in event_types'
   - 'view term revisions in unit'
   - 'view the administration theme'
   - 'view unpublished paragraphs'

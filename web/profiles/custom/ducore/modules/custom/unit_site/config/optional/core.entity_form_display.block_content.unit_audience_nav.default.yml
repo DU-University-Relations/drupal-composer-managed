@@ -5,7 +5,10 @@ dependencies:
     - block_content.type.unit_audience_nav
     - field.field.block_content.unit_audience_nav.field_unit_audience_nav_links
   module:
+    - content_moderation
     - link_attributes
+_core:
+  default_config_hash: 6g9J95V3cSkqvynOGKkad6DuWqY3qsIRyWOnofEpijE
 id: block_content.unit_audience_nav.default
 targetEntityType: block_content
 bundle: unit_audience_nav
