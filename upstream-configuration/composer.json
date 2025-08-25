@@ -90,7 +90,7 @@
         "drupal/webp": "^1.0@RC",
         "drupal/anchor_link": "~3.0",
         "drupal/simple_styleguide": "^2.0",
-        "drupal/single_content_sync": "1.4",
+        "drupal/single_content_sync": "^1.4",
         "drupal/google_tag": "^1.8",
         "drupal/sendgrid_integration": "^2.3",
         "drupal/group": "^3.3"
