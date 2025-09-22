@@ -25,7 +25,7 @@ function ducore_form_install_configure_form_alter(&$form, FormStateInterface $fo
 function ducore_user_presave(UserInterface $user) {
   // IMPRORTANT! Because of change to using CammelCase in usernames at DU wasn't 
   // retoactively applied, we are evaluating the match in lowercase.
-  $support_eas = array('kevin.reynen','kent.hogue','joshua.mcgehee','chris.hewitt','tj.sheu');
+  $support_eas = array('kevin.reynen','kent.hogue','joshua.mcgehee','tj.sheu');
   $support_ur =  array('mac.whitney','nathan.boorom','staci.striegnitz','sherry.liang','anastasia.vylegzhanina','james.e.thomas','derek.vonschulz');
   $support_ba = array('rosi.hull');
   // @TODO - These arrays should be YML files or API endpoint that can be 
@@ -55,9 +55,18 @@ function ducore_user_presave(UserInterface $user) {
  */
 function ducore_google_tag_snippets_alter(array &$snippets) {
 
-  if (!defined('PANTHEON_ENVIRONMENT') || $_ENV['PANTHEON_ENVIRONMENT'] != 'test' || $_ENV['PANTHEON_ENVIRONMENT'] != 'live') {
+  if (!defined('PANTHEON_ENVIRONMENT'){
+    // if it is a local DDEV instance, null out the gtm file contents
     $snippets['script'] = ' ';
     unset($snippets['noscript']);
     unset($snippets['data_layer']);
-  }
-}
+  } else {
+    if ($_ENV['PANTHEON_ENVIRONMENT'] == 'test' || $_ENV['PANTHEON_ENVIRONMENT'] == 'live') {
+      // do nothing
+    } else {
+      // if it isn't the test or live, null out the gtm file contents
+      $snippets['script'] = ' ';
+      unset($snippets['noscript']);
+      unset($snippets['data_layer']);
+    }
+  }  
