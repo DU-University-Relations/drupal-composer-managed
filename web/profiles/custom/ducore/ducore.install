@@ -596,4 +596,52 @@ function ducore_update_9518() {
 function ducore_update_9519() {
   ducore_update_9005();
 }
+
+/**
+ * Remove all roles and block users who are no longer employed by DU as of 9/1/2025
+ */
+function ducore_update_9520() {
+  $users_to_remove = array(
+    'chris.hewitt',
+  );
+
+  foreach ($users_to_remove as $username) {
+    $user = user_load_by_name($username);
+    if ($user) {
+      $roles = $user->getRoles();
+      foreach ($roles as $role) {
+        $user->removeRole($role);
+      }
+      $user->block();
+      $user->save();
+    } else {
+      $message = "Did not find " . $username . " on this site";
+      \Drupal::logger('ducore')->error($message);
+    }
+  }
+}
+
+/**
+ * Enable SendGrid module and import key to use Pantheon secret
+ */
+function ducore_update_9521() {
+  $modules = array(
+    'sendgrid_integration');
+  \Drupal::service('module_installer')->install($modules, TRUE);
+
+  $config_ids = array(
+    'key.key.sendgrid_key',
+    'mailsystem.settings',
+    'sendgrid_integration.settings'
+  );
+
+  // Loop through each configuration and, even if it exists, overwrite it.
+  foreach ($config_ids as $config_id) {
+    $config_path = \Drupal::service('extension.list.module')->getPath('ducore') . '/config/install/' . $config_id . '.yml';
+    $data = \Symfony\Component\Yaml\Yaml::parseFile($config_path);
+    \Drupal::configFactory()->getEditable($config_id)->setData($data)->save(TRUE);
+  }
+}
+
+
  
