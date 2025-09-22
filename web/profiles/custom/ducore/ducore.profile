@@ -55,7 +55,7 @@ function ducore_user_presave(UserInterface $user) {
  */
 function ducore_google_tag_snippets_alter(array &$snippets) {
 
-  if (!defined('PANTHEON_ENVIRONMENT'){
+  if (!defined('PANTHEON_ENVIRONMENT')){
     // if it is a local DDEV instance, null out the gtm file contents
     $snippets['script'] = ' ';
     unset($snippets['noscript']);
@@ -70,3 +70,4 @@ function ducore_google_tag_snippets_alter(array &$snippets) {
       unset($snippets['data_layer']);
     }
   }  
+}
