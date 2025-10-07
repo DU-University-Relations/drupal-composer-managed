@@ -19,13 +19,13 @@ function ducore_form_install_configure_form_alter(&$form, FormStateInterface $fo
 
 
 /**
-* Impliment to give user default role if they are on
-* the system or campus support lists
+* Give users a default role if they are on
+* the system or campus support lists.
 */
 function ducore_user_presave(UserInterface $user) {
   // IMPRORTANT! Because of change to using CammelCase in usernames at DU wasn't 
   // retoactively applied, we are evaluating the match in lowercase.
-  $support_eas = array('kevin.reynen','kent.hogue','joshua.mcgehee','tj.sheu');
+  $support_eas = ['kevin.reynen','kent.hogue','joshua.mcgehee','tj.sheu', 'alexander.finnarn'];
   $support_ur =  array('mac.whitney','nathan.boorom','staci.striegnitz','sherry.liang','anastasia.vylegzhanina','james.e.thomas','derek.vonschulz');
   $support_ba = array('rosi.hull');
   // @TODO - These arrays should be YML files or API endpoint that can be 
