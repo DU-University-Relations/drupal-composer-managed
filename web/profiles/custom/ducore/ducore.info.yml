@@ -1,7 +1,7 @@
 name: 'University of Denver Core'
 type: profile
 description: 'DU Core Profile for Drupal 10'
-version: 10.21.0
+version: 10.22.0
 core_version_requirement: ^10
 
 # Modules to be installed on profile installation.
@@ -71,6 +71,7 @@ install:
   - menu_block
   - anchor_link
   - sendgrid_integration
+  - termly
 
 # Required modules. These cannot be uninstalled.
 # Note that any dependencies of the modules listed here will be installed automatically.
@@ -136,6 +137,7 @@ dependencies:
   - crop
   - anchor_link
   - sendgrid_integration
+  - termly
 
 themes:
   - du_bootstrap

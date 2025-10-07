@@ -82,3 +82,9 @@ $ddev_settings = dirname(__FILE__) . '/settings.ddev.php';
 if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   require $ddev_settings;
 }
+
+// Load Termly key from Pantheon Secrets
+$termly_key = function_exists('pantheon_get_secret') ? (pantheon_get_secret('termly-key')) : null;
+if (!empty($termly_key)) {
+  $config['termly.settings']['site_key'] = $termly_key;  
+}

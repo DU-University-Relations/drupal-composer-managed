@@ -643,5 +643,14 @@ function ducore_update_9521() {
   }
 }
 
+/**
+ * Enable Termly module and overwrite site_key
+ */
+function ducore_update_9522() {
+  \Drupal::service('module_installer')->install(['termly'], TRUE);
 
- 
+  $config = \Drupal::configFactory()->getEditable('termly.settings');
+  if ($config->isNew() || $config->get('site_key')) {
+    $config->set('site_key', '')->save(TRUE); 
+  }
+}
