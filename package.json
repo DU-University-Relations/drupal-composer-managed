@@ -1,23 +1,11 @@
 {
-  "name": "drupal-composer-managed",
+  "name": "du-functional-testing",
   "version": "1.0.0",
-  "description": "This \"hard fork\" of Pantheon's recommended starting point for forking new [Drupal](https://www.drupal.org/) upstreams that work with the Platform's Integrated Composer build process.",
-  "main": "index.js",
+  "description": "Functional Testing for the ducore profile",
   "scripts": {
     "generate-roles": "ts-node tests/scripts/generate-role-data.ts",
     "test": "playwright test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DU-University-Relations/drupal-composer-managed.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DU-University-Relations/drupal-composer-managed/issues"
-  },
-  "homepage": "https://github.com/DU-University-Relations/drupal-composer-managed#readme",
   "devDependencies": {
     "@faker-js/faker": "^10.1.0",
     "@playwright/test": "^1.56.0",

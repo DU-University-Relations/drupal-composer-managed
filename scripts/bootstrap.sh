@@ -9,7 +9,10 @@ else
   IS_CI=false
 fi
 
-ddev start
+# DDEV already started in CI.
+if [ "$IS_CI" != true ]; then
+  ddev start
+fi
 
 ddev composer install --no-interaction --prefer-dist
 

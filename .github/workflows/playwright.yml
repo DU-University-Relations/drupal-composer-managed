@@ -13,10 +13,8 @@ concurrency:
 jobs:
   playwright:
     runs-on: ubuntu-22.04
-
-    # Set this if you've pinned a host port in .ddev/config.yaml (e.g., 59000)
     env:
-      PLAYWRIGHT_BASE_URL: http://127.0.0.1:59000
+      PLAYWRIGHT_BASE_URL: https://drupal-composer-managed.ddev.site
 
     steps:
       - name: Checkout
@@ -31,7 +29,6 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      # Install Playwright browsers & OS deps on Ubuntu runner
       - name: Install Playwright browsers (CI)
         run: npx playwright install --with-deps
 
@@ -41,7 +38,6 @@ jobs:
       - name: Run Playwright tests
         run: npm run test
 
-      # Optional: always upload Playwright HTML report for debugging
       - name: Upload Playwright report
         if: always()
         uses: actions/upload-artifact@v4

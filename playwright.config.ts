@@ -8,16 +8,6 @@ import { defineConfig, devices } from '@playwright/test';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-const getBaseURL = () => {
-  // CI environment (GitHub Actions)
-  if (process.env.CI) {
-    return process.env.BASE_URL || 'http://localhost:8080'
-  }
-
-  // DDEV local development
-  return process.env.BASE_URL || 'http://drupal-composer-managed.ddev.site'
-}
-
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -36,7 +26,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     // Get base URL from environment variable or default.
-    baseURL: getBaseURL(),
+    baseURL: process.env.BASE_URL || 'https://drupal-composer-managed.ddev.site',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
