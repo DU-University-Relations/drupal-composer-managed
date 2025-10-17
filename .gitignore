@@ -113,7 +113,7 @@ secrets.json
 /tests/playwright/support/auth/
 /playwright-report/
 /test-results/
-package-lock.json
+#package-lock.json
 
 # Playwright
 node_modules/
