@@ -1,0 +1,51 @@
+name: e2e
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+# Avoid overlapping runs per branch
+concurrency:
+  group: e2e-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  playwright:
+    runs-on: ubuntu-22.04
+
+    # Set this if you've pinned a host port in .ddev/config.yaml (e.g., 59000)
+    env:
+      PLAYWRIGHT_BASE_URL: http://127.0.0.1:59000
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup DDEV
+        uses: ddev/github-action-setup-ddev@v1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      # Install Playwright browsers & OS deps on Ubuntu runner
+      - name: Install Playwright browsers (CI)
+        run: npx playwright install --with-deps
+
+      - name: Run bootstrap script
+        run: bash scripts/bootstrap.sh
+
+      - name: Run Playwright tests
+        run: npm run test
+
+      # Optional: always upload Playwright HTML report for debugging
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report
+          if-no-files-found: ignore

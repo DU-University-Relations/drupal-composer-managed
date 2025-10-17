@@ -95,7 +95,7 @@
 .DS_Store*
 
 # Ignore local dev environments #
-#/.idea/
+/.idea/
 /.vscode/
 #/.ddev/
 !.ddev/config.yml
@@ -106,4 +106,28 @@ secrets.json
 # Ignore .env files as they are personal
 #/.env
 
+# Playwright Test Artifacts
+/node_modules/
+/tests/playwright/test-results/
+/tests/playwright/playwright-report/
+/tests/playwright/support/auth/
+/playwright-report/
+/test-results/
+package-lock.json
 
+# Playwright
+node_modules/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+# ---Other stuff---
+# Not sure why these were created but not ignored before
+
+web/sites/default/default.services.pantheon.preproduction.yml
+web/sites/default/default.services.yml
+web/sites/default/default.settings.php
+web/sites/default/settings.pantheon.php
+
+toops
+composer.lock

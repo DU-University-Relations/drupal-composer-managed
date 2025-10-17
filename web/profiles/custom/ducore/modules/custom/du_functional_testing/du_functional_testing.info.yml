@@ -1,0 +1,7 @@
+name: 'DU Functional Testing'
+type: module
+description: 'Provides Drush commands and utilities for functional testing with Playwright'
+package: DU
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:qa_accounts
