@@ -15,12 +15,13 @@ if [ "$IS_CI" != true ]; then
 fi
 
 ddev composer install --no-interaction --prefer-dist
+ddev drush si ducore -y
 
 if [ "$IS_CI" = true ]; then
-  echo "Installing profile..."
-  ddev drush si ducore -y
+  echo "Installing npm CI..."
   npm ci
 else
+  echo "Installing npm locally..."
   npm install
 fi
 
