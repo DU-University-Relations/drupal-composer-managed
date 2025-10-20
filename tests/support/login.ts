@@ -1,7 +1,8 @@
 import type { Page, BrowserContext } from '@playwright/test'
 import { expect } from '@playwright/test'
 import {Role} from "../data/test-roles";
-import {URLPattern} from "node:url";
+
+// @todo Implement cookie-based login https://medium.com/automated-monotony/using-playwright-cookies-to-bypass-authentication-b5eb29b35c73
 
 /**
  * Log in via the login form (SLOWEST method - ~2-5 seconds).
