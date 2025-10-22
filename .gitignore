@@ -106,20 +106,6 @@ secrets.json
 # Ignore .env files as they are personal
 #/.env
 
-# Playwright Test Artifacts
-/node_modules/
-/tests/playwright/test-results/
-/tests/playwright/playwright-report/
-/tests/playwright/support/auth/
-/playwright-report/
-/test-results/
-#package-lock.json
-
-# Playwright
-node_modules/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
 
 # ---Other stuff---will-delete-later
 # Not sure why these were created but not ignored before

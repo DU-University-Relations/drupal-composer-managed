@@ -14,17 +14,23 @@ test.describe('Basic Page Tests', () => {
     await logInViaForm(page, context, site_admin);
     await page.goto('/node/add/page');
 
-    await page.getByLabel('Title').fill(page_title);
+    await page.getByLabel('Title', {exact: true}).fill(page_title);
     await page.getByLabel('Alternative H1').fill(h1_text);
 
     // Open hero image paragraph.
     await page.getByRole('button', { name: 'Add Hero Media' }).click();
     // Open hero image file input.
     await page.getByRole('button', { name: 'Hero Image' }).click();
-    // Upload a file.
-    await await page.locator('.field--name-field-hero-media-header')
+    // Open media library.
+    await page.locator('.field--name-field-hero-media-header')
       .getByRole('button', { name: 'Select files' })
-      .setInputFiles('tests/e2e/fixtures/test.jpg');
+      .click();
+
+    const iframe = page.frameLocator('iframe[name="entity_browser_iframe_browse_files_modal"]');
+    // The button has onclick="event.preventDefault()" so just clicking should work
+    await iframe.locator('a.button:has-text("Select file")').click();
+
+    //.setInputFiles('tests/e2e/fixtures/test.jpg');
 
 
     await page.getByRole('button', { name: 'Save' }).click();

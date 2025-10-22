@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Functional Testing for the ducore profile",
   "scripts": {
-    "generate-roles": "ts-node tests/scripts/generate-role-data.ts",
-    "test": "playwright test"
+    "generate-roles": "ts-node scripts/generate-role-data.ts",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
   },
   "devDependencies": {
     "@faker-js/faker": "^10.1.0",

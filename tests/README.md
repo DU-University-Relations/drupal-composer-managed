@@ -2,9 +2,17 @@
 
 These are the tests for the DU Core Profile written using Drupal 10.
 
-## Common Docs
+## Testing Docs
 
-- [Testing Philosophy](docs/testing-philosophy.md)
+Some documentation about testing is available on the DU Confluence wiki abd some documentation 
+within this repository. You should place general testing documentation on the Confluence wiki 
+and docs specifically for writing tests within this repository.
+
+General testing documentation:
+- [Testing Introduction & Background](https://ducloudwiki.atlassian.net/wiki/spaces/DS/pages/1168900125/Testing+-+Introduction+Background)
+
+Project-specific testing documentation:
+- [Writing Tests](docs/writing-tests.md)
 
 ## Structure
 
@@ -37,7 +45,7 @@ Playwright tests are stored in this directory and broken down into test cases an
 
 ### scripts
 
-Any scripts used to create the test data should be stored here.
+Any scripts used to create files, like the test data, should be stored here.
 
 - `generate-role-data.ts` - Generates the `data/test-roles.ts` file via user role information 
   from drush.
@@ -49,12 +57,3 @@ Any support files used by the tests should be stored here.
 - `files.ts` - Support for working with files.
 - `login.ts` - Helper methods for logging users in and out of Drupal
 - `user-roles.ts` - Use this for working with users in tests.
-
-## Background Documentation
-
-It is a great idea to read the documentation for the dependencies of the tests. Playwright and 
-other dependencies have great documentation.
-
-- [Playwright](https://playwright.dev/docs/writing-tests) - Playwright introduction.
-  - [Locating Elements](https://playwright.dev/docs/locators) - Good advice on choosing locators.
-- [Faker](https://fakerjs.dev/guide/usage.html) - For generating fake data.

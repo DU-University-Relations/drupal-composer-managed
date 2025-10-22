@@ -30,12 +30,14 @@ jobs:
           cache: 'npm'
 
       - name: Install Playwright browsers (CI)
+        working-directory: tests
         run: npx playwright install --with-deps
 
       - name: Run bootstrap script
-        run: bash scripts/bootstrap.sh
+        run: bash scripts/bootstrap-ci.sh
 
       - name: Run Playwright tests
+        working-directory: tests
         run: npm run test
 
       - name: Upload Playwright report
