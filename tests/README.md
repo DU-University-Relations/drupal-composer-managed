@@ -44,7 +44,7 @@ PLAYWRIGHT_BASE_URL="https://test-site.pantheonsite.io/" npm run test
 
 ## Structure
 
-The tests' directoy is structured into separate subdirectories for various purposes.
+The tests' directory is structured into separate subdirectories for various purposes.
 
 ### Assets
 
