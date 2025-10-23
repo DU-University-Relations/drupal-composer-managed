@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
-import {logInViaForm, logOutViaUi} from "../support/login";
-import { getAllRoles } from "../support/user-roles";
+import { getAllRoles, logInViaForm, logOutViaUi } from "../../support/users";
 
 test.describe('Login and out Tests', () => {
   const testUsers = getAllRoles();
@@ -25,7 +24,7 @@ test.describe('Admin paths protected from anon', () => {
   paths.forEach((path) => {
     test(`anon access denied for: ${path}`, async ({ page, context }) => {
       const response = await page.goto(path);
-      // Expect 403 status code.
+      // Expect a 403 status code.
       expect(response).not.toBeNull();
       expect(response!.status()).toBe(403);
     });

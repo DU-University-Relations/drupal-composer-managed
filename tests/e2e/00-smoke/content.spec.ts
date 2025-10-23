@@ -1,9 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 
-import {logInViaForm, logOutViaUi} from "../support/login";
-import { getRole } from "../support/user-roles";
-import {getAssetPath} from "../support/files";
+import { getRole , logInViaForm, logOutViaUi} from "../../support/users";
+import {getAssetPath} from "../../support/files";
 
 test.describe('Basic Page Tests', () => {
   const site_admin = getRole('site_admin');

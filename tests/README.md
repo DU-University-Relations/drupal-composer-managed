@@ -55,5 +55,4 @@ Any scripts used to create files, like the test data, should be stored here.
 Any support files used by the tests should be stored here.
 
 - `files.ts` - Support for working with files.
-- `login.ts` - Helper methods for logging users in and out of Drupal
-- `user-roles.ts` - Use this for working with users in tests.
+- `users.ts` - Use this for working with users in tests including login/logout methods.
