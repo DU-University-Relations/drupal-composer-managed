@@ -14,7 +14,8 @@ export interface Role {
   // description?: string;
 }
 
-export const roles = {   authenticated: {
+export const roles = {
+  authenticated: {
     name: 'authenticated',
     test_user: 'qa_authenticated',
   },
