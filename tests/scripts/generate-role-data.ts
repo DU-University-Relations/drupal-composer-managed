@@ -54,7 +54,9 @@ export interface Role {
   // description?: string;
 }
 
-export const roles = { ${roleEntries}} as const satisfies Record<string, Role>;
+export const roles = {
+${roleEntries}
+} as const satisfies Record<string, Role>;
 // 'as const' = make this immutable and preserve exact string values as types
 // 'satisfies Record<string, Role>' = verify each role has 'name' and 'test_user' properties
 
