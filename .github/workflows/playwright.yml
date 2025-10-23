@@ -3,13 +3,7 @@ name: e2e
 on:
   pull_request:
     branches: [ master ]
-  workflow_dispatch:
-    inputs:
-      playwright_base_url:
-        description: 'Base URL for Playwright tests'
-        required: false
-        default: 'https://drupal-composer-managed.ddev.site'
-        type: string
+  workflow_dispatch: {}
 
 # Avoid overlapping runs per branch
 concurrency:
@@ -20,7 +14,8 @@ jobs:
   playwright:
     runs-on: ubuntu-22.04
     env:
-      PLAYWRIGHT_BASE_URL: ${{ inputs.playwright_base_url || 'https://drupal-composer-managed.ddev.site' }}
+      PLAYWRIGHT_BASE_URL: https://drupal-composer-managed.ddev.site
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
