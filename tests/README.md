@@ -56,3 +56,11 @@ Any support files used by the tests should be stored here.
 
 - `files.ts` - Support for working with files.
 - `users.ts` - Use this for working with users in tests including login/logout methods.
+
+## Todos
+
+These would be good things to add to the tests:
+
+- [ ] Implement cookie-based login https://medium.com/automated-monotony/using-playwright-cookies-to-bypass-authentication-b5eb29b35c73
+- [ ] Possibly move bootstrap scripts to DDEV commands
+- 
