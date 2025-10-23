@@ -5,5 +5,5 @@ ddev is not running. Not sure the best place to put these.
 
 ## Scripts
 
-- `bootstap-local.sh` - Bootstraps a local Drupal site for development and testing.
+- `bootstrap-local.sh` - Bootstraps a local Drupal site for development and testing.
 - `bootstrap-ci.sh` - Bootstraps a Drupal site for CI testing on GitHub.
