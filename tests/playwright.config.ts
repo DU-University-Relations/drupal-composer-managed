@@ -25,7 +25,7 @@ export default defineConfig({
   reporter: process.env.CI ? 'github' : 'list',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    // Get base URL from environment variable or default.
+    // Get base URL from the environment variable or default.
     baseURL: process.env.BASE_URL || 'https://drupal-composer-managed.ddev.site',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
