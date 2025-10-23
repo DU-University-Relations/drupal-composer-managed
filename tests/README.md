@@ -4,7 +4,7 @@ These are the tests for the DU Core Profile written using Drupal 10.
 
 ## Testing Docs
 
-Some documentation about testing is available on the DU Confluence wiki abd some documentation 
+Some documentation about testing is available on the DU Confluence wiki and some documentation 
 within this repository. You should place general testing documentation on the Confluence wiki 
 and docs specifically for writing tests within this repository.
 
