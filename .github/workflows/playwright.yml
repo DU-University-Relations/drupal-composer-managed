@@ -30,6 +30,23 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'tests/package-lock.json'
 
+      # Uncomment this step when using in a package repo
+      # This checks out the Drupal upstream to provide the full Drupal environment for testing.
+      # - name: Checkout Drupal upstream
+      #   uses: actions/checkout@v4
+      #   with:
+      #     repository: DU-University-Relations/drupal-composer-managed
+      #     path: upstream
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #
+      # - name: Copy package into upstream
+      #   run: |
+      #     # TODO: Customize based on your package structure
+      #     # Example for custom modules:
+      #     # cp -r web/modules/custom/* upstream/web/modules/custom/
+      #     # Example for config:
+      #     # cp -r config/* upstream/config/
+
       - name: Install Playwright browsers (CI)
         working-directory: tests
         run: npx playwright install --with-deps
