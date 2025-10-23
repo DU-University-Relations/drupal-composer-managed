@@ -14,6 +14,34 @@ General testing documentation:
 Project-specific testing documentation:
 - [Writing Tests](docs/writing-tests.md)
 
+## Testing Setup
+
+The `./scripts/bootstrap-local.sh` script will setup the environment for running the tests, but 
+you can look at the commands in the script and run them manually if you need to.
+
+```bash
+# Install testing dependencies.
+npm install
+ddev drush en du_functional_testing -y
+
+# Generate test user data.
+npm run generate-roles
+```
+
+## Running Tests
+
+The tests are set to run using a `baseURL` in the Playwright config file, but you can also pass 
+in the base URL as an argument to the `npm run test` command in order to run the tests against 
+a different environment, like on Pantheon.
+
+```bash
+# Run tests against a local environment.
+npm run test
+
+# Run tests against a Pantheon environment.
+PLAYWRIGHT_BASE_URL="https://test-site.pantheonsite.io/" npm run test 
+```
+
 ## Structure
 
 The tests' directoy is structured into separate subdirectories for various purposes.
@@ -63,4 +91,5 @@ These would be good things to add to the tests:
 
 - [ ] Implement cookie-based login https://medium.com/automated-monotony/using-playwright-cookies-to-bypass-authentication-b5eb29b35c73
 - [ ] Possibly move bootstrap scripts to DDEV commands
-- 
+- [ ] Add the ability to run drush commands via the support helper files
+- [ ] Stop CI run on first test failure
