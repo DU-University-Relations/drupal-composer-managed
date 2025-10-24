@@ -106,3 +106,12 @@ secrets.json
 # Ignore .env files as they are personal
 #/.env
 
+# Ignore contrib module and custom DU packages.
+web/modules
+
+# Playwright
+node_modules/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+/test-results/

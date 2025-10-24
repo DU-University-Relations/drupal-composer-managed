@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Functional Testing for the ducore profile",
   "scripts": {
-    "generate-roles": "ts-node scripts/generate-role-data.ts",
+    "generate-roles": "ts-node tests/scripts/generate-role-data.ts",
     "test": "playwright test",
     "test:ui": "playwright test --ui"
   },

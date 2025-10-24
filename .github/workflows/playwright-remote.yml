@@ -25,7 +25,6 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
-          cache-dependency-path: 'tests/package-lock.json'
 
       - name: Install Terminus
         run: |
@@ -42,11 +41,9 @@ jobs:
           terminus drush ${{ inputs.site_name }}.${{ inputs.pantheon_env }} -- en du_functional_testing -y
 
       - name: Install Playwright browsers
-        working-directory: tests
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        working-directory: tests
         env:
           PLAYWRIGHT_BASE_URL: https://${{ inputs.pantheon_env }}-${{ inputs.site_name }}.pantheonsite.io
         run: npm run test
