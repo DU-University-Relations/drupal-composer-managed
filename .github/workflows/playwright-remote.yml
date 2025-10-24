@@ -46,7 +46,7 @@ jobs:
       - name: Run Playwright tests
         env:
           PLAYWRIGHT_BASE_URL: https://${{ inputs.pantheon_env }}-${{ inputs.site_name }}.pantheonsite.io
-        run: npm run test
+        run: npx playwright test
 
       - name: Upload Playwright report
         if: always()

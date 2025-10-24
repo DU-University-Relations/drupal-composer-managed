@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { getAllRoles, logInViaForm, logOutViaUi } from "@support/users";
 
-test.describe('Login and out Tests', () => {
+test.describe('@smoke - Login and out Tests', () => {
   const testUsers = getAllRoles();
 
   testUsers.forEach((role) => {
@@ -12,7 +12,7 @@ test.describe('Login and out Tests', () => {
   });
 });
 
-test.describe('Admin paths protected from anon', () => {
+test.describe('@smoke - Admin paths protected from anon', () => {
   const paths = [
     '/admin/config',
     '/admin/content',

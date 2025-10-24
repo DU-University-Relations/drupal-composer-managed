@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 import { getRole , logInViaForm, logOutViaUi} from "@support/users";
 import {getAssetPath} from "@support/files";
 
-test.describe('Basic Page Tests', () => {
+test.describe('@smoke - Basic Page Tests', () => {
   const site_admin = getRole('site_admin');
   const page_title = faker.lorem.words(3);
   const h1_text = faker.lorem.words(3);
