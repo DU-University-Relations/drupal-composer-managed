@@ -10,7 +10,13 @@
     "strict": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["node", "@playwright/test"]
+    "types": ["node", "@playwright/test"],
+    "baseUrl": ".",
+    "paths": {
+      "@tests/*": ["tests/*"],
+      "@fixtures/*": ["tests/fixtures/*"],
+      "@support/*": ["tests/support/*"]
+    }
   },
   "exclude": [
     "node_modules"
