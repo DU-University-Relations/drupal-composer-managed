@@ -29,11 +29,11 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      - name: Install Playwright browsers (CI)
-        run: npx playwright install --with-deps
-
       - name: Run bootstrap script
         run: bash scripts/bootstrap-ci.sh
+
+      - name: Install Playwright browsers (CI)
+        run: npx playwright install --with-deps
 
       - name: Run Playwright tests
         run: npx playwright test
