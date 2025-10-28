@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { getAllRoles, logInViaForm, logOutViaUi } from "@support/users";
+import { getAllRoles, logInViaForm, logOutViaUi } from "@du_pw/support/users";
 
 test.describe('@smoke - Login and out Tests', () => {
   const testUsers = getAllRoles();

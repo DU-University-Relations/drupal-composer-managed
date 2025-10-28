@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { faker } from '@faker-js/faker';
 
-import { getRole , logInViaForm, logOutViaUi} from "@support/users";
-import {getAssetPath} from "@support/files";
+import { getRole , logInViaForm, logOutViaUi} from "@du_pw/support/users";
+import {getAssetPath} from "@du_pw/support/files";
 
 test.describe('@smoke - Basic Page Tests', () => {
   const site_admin = getRole('site_admin');
@@ -18,7 +18,7 @@ test.describe('@smoke - Basic Page Tests', () => {
 
     // Open hero image paragraph.
     await page.getByRole('button', { name: 'Add Hero Media' }).click();
-    // Open hero image file input.
+    // Open the hero image file field.
     await page.getByRole('button', { name: 'Hero Image' }).click();
     // Open media library.
     await page.locator('.field--name-field-hero-media-header')
@@ -26,7 +26,7 @@ test.describe('@smoke - Basic Page Tests', () => {
       .click();
 
     const iframe = page.frameLocator('iframe[name="entity_browser_iframe_browse_files_modal"]');
-    // The button has onclick="event.preventDefault()" so just clicking should work
+    // The button has onclick="event.preventDefault()" so just clicking should work.
     await iframe.locator('a.button:has-text("Select file")').click();
 
     //.setInputFiles('tests/e2e/fixtures/test.jpg');
