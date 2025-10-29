@@ -13,7 +13,7 @@
     "types": ["node", "@playwright/test"],
     "baseUrl": ".",
     "paths": {
-      "@du_pw/*": ["tests/*"],
+      "@du_pw/*": ["tests/playwright/*"],
     }
   },
   "exclude": [

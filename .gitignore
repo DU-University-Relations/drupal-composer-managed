@@ -115,3 +115,10 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 /test-results/
+
+# --- delete before merge ---
+composer.lock
+web/sites/default/default.services.pantheon.preproduction.yml
+web/sites/default/default.services.yml
+web/sites/default/default.settings.php
+web/sites/default/settings.pantheon.php
