@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '@du_pw/test';
 import { faker } from '@faker-js/faker';
 
 import { getRole , logInViaForm, logOutViaUi} from "@du_pw/support/users";

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '@du_pw/test';
 import { getAllRoles, logInViaForm, logOutViaUi } from "@du_pw/support/users";
 
 test.describe('@smoke - Login and out Tests', () => {
