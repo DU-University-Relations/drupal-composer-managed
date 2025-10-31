@@ -95,7 +95,7 @@
 .DS_Store*
 
 # Ignore local dev environments #
-#/.idea/
+/.idea/
 /.vscode/
 #/.ddev/
 !.ddev/config.yml
@@ -106,4 +106,12 @@ secrets.json
 # Ignore .env files as they are personal
 #/.env
 
+# Ignore contrib module and custom DU packages.
+web/modules
 
+# Playwright
+node_modules/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+/test-results/
