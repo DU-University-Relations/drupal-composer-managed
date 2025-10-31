@@ -361,6 +361,9 @@
             "web/modules/custom/{$name}": [
                 "type:drupal-custom-module"
             ],
+            "web/modules/packages/{$name}": [
+                "type:drupal-custom-module-package"
+            ],
             "web/profiles/custom/{$name}": [
                 "type:drupal-custom-profile"
             ],
