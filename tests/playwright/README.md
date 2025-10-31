@@ -31,20 +31,26 @@ npm run generate-roles
 ## Running Tests
 
 The tests are set to run using a `baseURL` in the Playwright config file, but you can also pass 
-in the base URL as an argument to the `npm run test` command in order to run the tests against 
-a different environment, like on Pantheon.
+in the base URL as an argument to the `npx playwright test` command in order to run the tests 
+against a different environment, like on Pantheon.
 
 ```bash
 # Run tests against a local environment.
-npm run test
+npx playwright test
 
 # Run tests against a Pantheon environment.
-PLAYWRIGHT_BASE_URL="https://test-site.pantheonsite.io/" npm run test 
+BASE_URL="https://test-site.pantheonsite.io/" npx playwright test
+
+# Run tests od a specific tag.
+npx playwright test --tag @tag-name
 ```
 
 ## Structure
 
-The tests' directory is structured into separate subdirectories for various purposes.
+The `tests/playwright` directory is structured into separate subdirectories for various purposes.
+
+- `test.ts` - This extends Playwright's `test` function and is the entry point for the tests.
+  - Also excludes certain routes from loading during tests, like Termly.
 
 ### Assets
 
