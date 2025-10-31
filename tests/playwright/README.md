@@ -42,7 +42,7 @@ npx playwright test
 BASE_URL="https://test-site.pantheonsite.io/" npx playwright test
 
 # Run tests od a specific tag.
-npx playwright test --tag @tag-name
+npx playwright test --grep @tag-name
 ```
 
 ## Structure
