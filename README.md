@@ -16,6 +16,8 @@ https://ducloudwiki.atlassian.net/wiki/spaces/DS/pages/564690946/DUCore+-+Featur
 
 [![Install and DU Core install](https://github.com/DU-University-Relations/drupal-composer-managed/actions/workflows/drush.yml/badge.svg)](https://github.com/DU-University-Relations/drupal-composer-managed/actions/workflows/drush.yml)
 
+[![e2e](https://github.com/DU-University-Relations/drupal-composer-managed/actions/workflows/playwright.yml/badge.svg)](https://github.com/DU-University-Relations/drupal-composer-managed/actions/workflows/playwright.yml)
+
 [![DU Bootstrap Theme Test](https://github.com/DU-University-Relations/du_bootstrap/actions/workflows/theme-test.yml/badge.svg)](https://github.com/DU-University-Relations/du_bootstrap/actions/workflows/theme-test.yml)
 
 
