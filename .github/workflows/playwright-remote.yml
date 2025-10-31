@@ -1,0 +1,57 @@
+name: e2e-remote
+
+on:
+  workflow_dispatch:
+    inputs:
+      pantheon_env:
+        description: 'Pantheon environment (dev, test, live, or multidev name)'
+        required: true
+        type: string
+      site_name:
+        description: 'Pantheon site name'
+        required: true
+        default: 'your-site-name'
+        type: string
+
+jobs:
+  playwright-remote:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install Terminus
+        run: |
+          curl -O https://raw.githubusercontent.com/pantheon-systems/terminus-installer/master/builds/installer.phar
+          php installer.phar install
+
+      - name: Authenticate Terminus
+        env:
+          TERMINUS_TOKEN: ${{ secrets.TERMINUS_TOKEN }}
+        run: terminus auth:login --machine-token=$TERMINUS_TOKEN
+
+      - name: Enable testing module
+        run: |
+          terminus drush ${{ inputs.site_name }}.${{ inputs.pantheon_env }} -- en du_functional_testing -y
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        env:
+          PLAYWRIGHT_BASE_URL: https://${{ inputs.pantheon_env }}-${{ inputs.site_name }}.pantheonsite.io
+        run: npx playwright test
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-remote
+          path: playwright-report
+          if-no-files-found: ignore

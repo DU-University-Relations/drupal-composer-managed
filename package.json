@@ -1,0 +1,14 @@
+{
+  "name": "du-functional-testing",
+  "version": "1.0.0",
+  "description": "Functional Testing for the ducore profile",
+  "scripts": {
+    "generate-roles": "ts-node tests/playwright/scripts/generate-role-data.ts"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^10.1.0",
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^24.7.2",
+    "ts-node": "^10.9.2"
+  }
+}
