@@ -41,7 +41,7 @@ npx playwright test
 # Run tests against a Pantheon environment.
 BASE_URL="https://test-site.pantheonsite.io/" npx playwright test
 
-# Run tests od a specific tag.
+# Run tests on a specific tag.
 npx playwright test --grep @tag-name
 ```
 
