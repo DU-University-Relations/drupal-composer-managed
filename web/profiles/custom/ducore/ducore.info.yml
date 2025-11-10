@@ -72,6 +72,7 @@ install:
   - anchor_link
   - sendgrid_integration
   - termly
+  - page_cache_exclusion
 
 # Required modules. These cannot be uninstalled.
 # Note that any dependencies of the modules listed here will be installed automatically.
@@ -138,6 +139,7 @@ dependencies:
   - anchor_link
   - sendgrid_integration
   - termly
+  - page_cache_exclusion
 
 themes:
   - du_bootstrap
