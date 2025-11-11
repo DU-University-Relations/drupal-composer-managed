@@ -1,0 +1,7 @@
+du_logging.settings:
+  path: '/admin/config/development/du_logging'
+  defaults:
+    _form: '\Drupal\du_logging\Form\FilteredLoggerSettingsForm'
+    _title: 'Filtered Logger Settings'
+  requirements:
+    _permission: 'administer site configuration'

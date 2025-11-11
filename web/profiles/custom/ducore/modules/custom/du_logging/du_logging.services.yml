@@ -1,0 +1,11 @@
+services:
+  du_logging.dblog_filter:
+    class: Drupal\du_logging\Logger\FilteredLogger
+    decorates: logger.dblog
+    decoration_priority: 100
+    arguments:
+      - '@logger.dblog_filter.inner'
+      - '@config.factory'
+    tags:
+      - { name: logger }
+
