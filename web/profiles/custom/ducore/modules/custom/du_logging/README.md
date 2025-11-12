@@ -1,16 +1,14 @@
 ## INTRODUCTION
 
-The DU Logging module is a DESCRIBE_THE_MODULE_HERE.
+The DU Logging module alters logging on Drupal sites to:
 
-The primary use case for this module is:
-
-- Use case #1
+- Reduce the number of database log entries when `dblog` is enabled.
 - Use case #2
 - Use case #3
 
 ## REQUIREMENTS
 
-DESCRIBE_MODULE_DEPENDENCIES_HERE
+This module works with `dblog` enabled.
 
 ## INSTALLATION
 

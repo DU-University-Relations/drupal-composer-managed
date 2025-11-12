@@ -1,11 +1,9 @@
 <?php
 
-namespace Drupal\dblog_filter\Logger;
+namespace Drupal\du_logging\Logger;
 
 use Drupal\Core\Config\ConfigFactory;
-use Drupal\Core\Logger\LogMessageParserInterface;
 use Drupal\Core\Logger\RfcLoggerTrait;
-use Drupal\Core\Logger\RfcLogLevel;
 use Psr\Log\LoggerInterface;
 
 /**
