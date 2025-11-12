@@ -1,7 +1,7 @@
 import { test, expect } from '@du_pw/test';
 import { faker } from '@faker-js/faker';
 
-import { getRole , logInViaForm, logOutViaUi} from "@du_pw/support/users";
+import { getRole , logIn, logOutViaUi} from "@du_pw/support/users";
 import {getAssetPath} from "@du_pw/support/files";
 
 test.describe('@smoke - Basic Page Tests', () => {
@@ -9,8 +9,17 @@ test.describe('@smoke - Basic Page Tests', () => {
   const page_title = faker.lorem.words(3);
   const h1_text = faker.lorem.words(3);
 
+
+  test('Test cookie login', async ({ page, context }) => {
+    await logIn(page, context, site_admin);
+    await page.goto('/node/add/page');
+
+    await page.getByLabel('Title', {exact: true}).fill(page_title);
+    await page.getByLabel('Alternative H1').fill(h1_text);
+  })
+
   test.skip('Create basic page', async ({ page, context }) => {
-    await logInViaForm(page, context, site_admin);
+    await logIn(page, context, site_admin);
     await page.goto('/node/add/page');
 
     await page.getByLabel('Title', {exact: true}).fill(page_title);

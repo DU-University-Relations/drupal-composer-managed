@@ -12,6 +12,10 @@
 
 import { roles, Role, RoleName } from '../data/test-roles';
 import {BrowserContext, expect, Page} from "@playwright/test";
+import fs from 'node:fs/promises';
+import path from 'node:path';
+
+const COOKIE_DIR = path.join(__dirname, '.auth');
 
 /**
  * Type guard to check if a string is a valid role name
@@ -155,6 +159,55 @@ export async function logOutViaUi(page: Page): Promise<void> {
 }
 
 /**
+ * Gets the cookie file path for a specific role
+ */
+function getCookiePath(role: Role): string {
+  return path.join(COOKIE_DIR, `${role.name}-cookies.json`);
+}
+
+/**
+ * Loads cookies from file and adds them to the context
+ */
+async function loadCookies(context: BrowserContext, role: Role): Promise<boolean> {
+  const cookiePath = getCookiePath(role);
+
+  try {
+    const cookiesString = await fs.readFile(cookiePath, 'utf-8');
+    const cookies = JSON.parse(cookiesString);
+    await context.addCookies(cookies);
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+/**
+ * Saves cookies to file for future use
+ */
+async function saveCookies(context: BrowserContext, role: Role): Promise<void> {
+  await fs.mkdir(COOKIE_DIR, { recursive: true });
+  const cookies = await context.cookies();
+  await fs.writeFile(
+    getCookiePath(role),
+    JSON.stringify(cookies, null, 2),
+    'utf-8'
+  );
+}
+
+/**
+ * Logs in using saved cookies, falls back to form login if needed
+ */
+export async function logIn(page: Page, context: BrowserContext, role: Role): Promise<void> {
+  const cookiesLoaded = await loadCookies(context, role);
+
+  // No saved cookies, login via form and then save cookies for future use.
+  if (!cookiesLoaded) {
+    await logInViaForm(page, context, role);
+    await saveCookies(context, role);
+  }
+}
+
+/**
  * Default export for convenience
  */
 export default {
@@ -168,4 +221,5 @@ export default {
   ROLES,
   logInViaForm,
   logOutViaUi,
+  logIn,
 };
