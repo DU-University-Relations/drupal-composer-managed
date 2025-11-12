@@ -10,12 +10,13 @@
  *   const allRoles = getAllRoles();
  */
 
-import { roles, Role, RoleName } from '../data/test-roles';
-import {BrowserContext, expect, Page} from "@playwright/test";
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { roles, Role, RoleName } from '../data/users/test-roles';
+import { BrowserContext, expect, Page } from "@playwright/test";
+import { getDataPath } from "@du_pw/support/files";
 
-const COOKIE_DIR = path.join(__dirname, '.auth');
+const COOKIE_DIR = getDataPath('cookies');
 
 /**
  * Type guard to check if a string is a valid role name
