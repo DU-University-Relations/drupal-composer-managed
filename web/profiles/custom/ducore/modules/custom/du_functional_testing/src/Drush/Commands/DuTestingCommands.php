@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\du_functional_testing\Drush\Commands;
 
+use Drupal\node\Entity\Node;
 use Drupal\user\Entity\Role;
 use Drush\Commands\DrushCommands;
 use Drush\Attributes as CLI;
@@ -40,5 +41,58 @@ final class DuTestingCommands extends DrushCommands {
     }
 
     $this->output()->writeln(json_encode($role_data, JSON_PRETTY_PRINT));
+  }
+
+  /**
+   * Delete all content created by a specific user.
+   */
+  #[CLI\Command(name: 'du:delete-content', aliases: ['du:dc'])]
+  #[CLI\Option(name: 'user', description: 'The username of the user whose content should be deleted')]
+  #[CLI\Usage(name: 'drush du:delete-content --user=qa_site_admin', description: 'Delete all content created by qa_site_admin user.')]
+  public function deleteContent(array $options = ['user' => NULL]): void {
+    $username = $options['user'];
+
+    if (empty($username)) {
+      $this->logger()->error('Username is required. Use --user=username');
+      return;
+    }
+
+    // Load the user by username.
+    $users = \Drupal::entityTypeManager()
+      ->getStorage('user')
+      ->loadByProperties(['name' => $username]);
+
+    if (empty($users)) {
+      $this->logger()->error("User '{$username}' not found.");
+      return;
+    }
+
+    $user = reset($users);
+    $uid = $user->id();
+
+    // Find all nodes created by this user.
+    $query = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->getQuery()
+      ->condition('uid', $uid)
+      ->accessCheck(FALSE);
+
+    $nids = $query->execute();
+
+    if (empty($nids)) {
+      $this->logger()->success("No content found for user '{$username}'.");
+      return;
+    }
+
+    $count = count($nids);
+    $this->logger()->notice("Found {$count} content item(s) for user '{$username}'.");
+
+    // Delete the nodes.
+    $nodes = Node::loadMultiple($nids);
+    foreach ($nodes as $node) {
+      $node->delete();
+    }
+
+    $this->logger()->success("Successfully deleted {$count} content item(s) for user '{$username}'.");
   }
 }
