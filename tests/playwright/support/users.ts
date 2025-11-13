@@ -1,20 +1,14 @@
 /**
- * Drupal Role Management Helper
+ * Drupal User Management Helper
  *
- * Provides type-safe access to Drupal user roles for testing.
- *
- * Usage:
- *   import { getRole, getAllRoles, hasRole } from '../support/roles';
- *
- *   const adminRole = getRole('administrator');
- *   const allRoles = getAllRoles();
+ * Provides type-safe access to Drupal users for testing.
  */
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { roles, Role, RoleName } from '../data/users/test-roles';
-import { BrowserContext, expect, Page } from "@playwright/test";
-import { getDataPath } from "@du_pw/support/files";
+import {Role, RoleName, roles} from '../data/users/test-roles';
+import {BrowserContext, expect, Page} from "@playwright/test";
+import {getDataPath} from "@du_pw/support/files";
 
 const COOKIE_DIR = getDataPath('cookies');
 
@@ -209,6 +203,18 @@ export async function logIn(page: Page, context: BrowserContext, role: Role): Pr
 }
 
 /**
+ * Create a fresh anonymous Page (new isolated BrowserContext).
+ * @param sourceContext Existing test BrowserContext.
+ * @returns Anonymous Page in its own new BrowserContext.
+ */
+export async function createAnonSession(sourceContext: BrowserContext): Promise<Page> {
+  const browser = sourceContext.browser();
+  if (!browser) throw new Error('Browser not available from source context.');
+  const anonContext = await browser.newContext();
+  return await anonContext.newPage();
+}
+
+/**
  * Default export for convenience
  */
 export default {
@@ -223,4 +229,5 @@ export default {
   logInViaForm,
   logOutViaUi,
   logIn,
+  createAnonSession
 };
