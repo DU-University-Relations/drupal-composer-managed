@@ -44,14 +44,72 @@ final class DuTestingCommands extends DrushCommands {
   }
 
   /**
-   * Delete all content created by a specific user.
+   * Delete all content created by a specific user or matching a title pattern.
    */
   #[CLI\Command(name: 'du:delete-content', aliases: ['du:dc'])]
   #[CLI\Option(name: 'user', description: 'The username of the user whose content should be deleted')]
+  #[CLI\Option(name: 'title', description: 'Exact title of the node to delete')]
+  #[CLI\Option(name: 'title-pattern', description: 'Pattern to match in node titles (use % as wildcard)')]
   #[CLI\Usage(name: 'drush du:delete-content --user=qa_site_admin', description: 'Delete all content created by qa_site_admin user.')]
-  public function deleteContent(array $options = ['user' => NULL]): void {
-    $username = $options['user'];
+  #[CLI\Usage(name: 'drush du:delete-content --title="Test Article"', description: 'Delete node with exact title "Test Article".')]
+  #[CLI\Usage(name: 'drush du:delete-content --title-pattern="Test%"', description: 'Delete all nodes with titles starting with "Test".')]
+  public function deleteContent(array $options = ['user' => NULL, 'title' => NULL, 'title-pattern' => NULL]): void {
+    // Ensure at least one option is provided
+    if (empty($options['user']) && empty($options['title']) && empty($options['title-pattern'])) {
+      $this->logger()->error('One of --user, --title, or --title-pattern is required.');
+      return;
+    }
 
+    // Ensure only one option is provided
+    $provided = array_filter([$options['user'], $options['title'], $options['title-pattern']]);
+    if (count($provided) > 1) {
+      $this->logger()->error('Please provide only one of --user, --title, or --title-pattern.');
+      return;
+    }
+
+    $query = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->getQuery()
+      ->accessCheck(FALSE);
+
+    // Build query based on provided option
+    if (!empty($options['user'])) {
+      $this->deleteContentByUser($options['user']);
+      return;
+    }
+    elseif (!empty($options['title'])) {
+      $query->condition('title', $options['title']);
+      $context = "with exact title '{$options['title']}'";
+    }
+    elseif (!empty($options['title-pattern'])) {
+      $query->condition('title', $options['title-pattern'], 'LIKE');
+      $context = "matching title pattern '{$options['title-pattern']}'";
+    }
+
+    $nids = $query->execute();
+
+    if (empty($nids)) {
+      $this->logger()->success("No content found {$context}.");
+      return;
+    }
+
+    $count = count($nids);
+    $this->logger()->notice("Found {$count} content item(s) {$context}.");
+
+    // Delete the nodes
+    $nodes = Node::loadMultiple($nids);
+    foreach ($nodes as $node) {
+      $this->logger()->notice("Deleting: {$node->getTitle()} (ID: {$node->id()})");
+      $node->delete();
+    }
+
+    $this->logger()->success("Successfully deleted {$count} content item(s) {$context}.");
+  }
+
+  /**
+   * Delete all content created by a specific user.
+   */
+  public function deleteContentByUser(string $username): void {
     if (empty($username)) {
       $this->logger()->error('Username is required. Use --user=username');
       return;
