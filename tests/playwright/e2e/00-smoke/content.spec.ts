@@ -1,7 +1,7 @@
 import { test, expect } from '@du_pw/test';
 import { faker } from '@faker-js/faker';
 
-import {createAnonSession, getRole, logIn, logOutViaUi} from "@du_pw/support/users";
+import {createAnonSession, getRole, logIn} from "@du_pw/support/users";
 // import {getAssetPath} from "@du_pw/support/files";
 import {runDrushCommand} from "@du_pw/support/drush";
 
