@@ -63,7 +63,8 @@ class FilteredLoggerSettingsForm extends ConfigFormBase {
       '#type' => 'textarea',
       '#title' => $this->t('Message patterns to filter'),
       '#default_value' => implode("\n", $config->get('patterns') ?: []),
-      '#description' => $this->t('Enter one regex pattern per line. Example: /deprecated/i'),
+      '#description' => $this->t('Enter one regex pattern per line. Example: /deprecated/i'
+      . "\nPatterns are applied to the final, rendered log message (as shown in the database log UI), not the raw template string."),
     ];
 
     return parent::buildForm($form, $form_state);

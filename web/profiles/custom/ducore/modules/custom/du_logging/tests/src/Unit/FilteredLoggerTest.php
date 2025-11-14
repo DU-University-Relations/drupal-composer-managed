@@ -26,10 +26,14 @@ class FilteredLoggerTest extends UnitTestCase {
    */
   private function createStringTranslation(): TranslationInterface {
     $translation = $this->createMock(TranslationInterface::class);
-    // Default: just return the original message.
+    // Naive token replacement to simulate rendered messages.
     $translation->method('translate')
       ->willReturnCallback(static function ($message, array $context = []) {
-        // You can customize this if you need tokens/contexts later.
+        foreach ($context as $key => $value) {
+          // Replace both @key and %key placeholders.
+          $message = str_replace('@' . $key, $value, $message);
+          $message = str_replace('%' . $key, $value, $message);
+        }
         return $message;
       });
 
@@ -179,6 +183,45 @@ class FilteredLoggerTest extends UnitTestCase {
 
     $logger = new FilteredLogger($inner, $configFactory, $this->translation);
     $logger->log(RfcLogLevel::INFO, 'Unfiltered message');
+  }
+
+  /**
+   * If the rendered (token-replaced) message matches a configured pattern,
+   * it must not reach the inner logger.
+   *
+   * This simulates the typical dblog message template:
+   *   '@type: @message in %function (line %line of %file).'
+   * and a pattern the admin copied from the dblog UI, e.g.
+   *   '/CacheableAccessDeniedHttpException/i'
+   *
+   * @covers ::log
+   */
+  public function testRenderedMessagePatternFiltered(): void {
+    $inner = $this->createMock(LoggerInterface::class);
+    $inner->expects($this->never())->method('log');
+
+    $configFactory = $this->createConfigFactory([
+      'enabled' => TRUE,
+      'log_levels' => [],
+      'message_types' => [],
+      'patterns' => ['/CacheableAccessDeniedHttpException/i'],
+    ]);
+
+    // This is roughly what core uses for dblog message templates.
+    $template = '@type: @message in %function (line %line of %file).';
+
+    // IMPORTANT: keys are bare (type, message, function, line, file),
+    // the template uses @type, @message, %function, %line, %file.
+    $context = [
+      'type' => 'Path',
+      'message' => "Drupal\\Core\\Http\\Exception\\CacheableAccessDeniedHttpException: The 'access site reports' permission is required.",
+      'function' => 'Drupal\\Core\\Routing\\AccessAwareRouter->checkAccess()',
+      'line' => 117,
+      'file' => '/var/www/html/web/core/lib/Drupal/Core/Routing/AccessAwareRouter.php',
+    ];
+
+    $logger = new FilteredLogger($inner, $configFactory, $this->translation);
+    $logger->log(RfcLogLevel::ERROR, $template, $context);
   }
 
 }
