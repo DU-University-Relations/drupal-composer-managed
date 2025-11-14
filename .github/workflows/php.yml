@@ -33,4 +33,7 @@ jobs:
       run: composer install --no-interaction --no-progress --prefer-dist --ansi
 
     - name: Run unit test suite
-      run: vendor/bin/phpunit -c web/core/phpunit.xml.dist web/profiles/custom/ducore/
+      run: |
+        vendor/bin/phpunit -c web/core/phpunit.xml.dist \
+        web/profiles/custom \
+        web/modules/custom
