@@ -3,6 +3,7 @@
 namespace Drupal\Tests\du_logging\Unit;
 
 use Drupal\Core\Logger\RfcLogLevel;
+use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\Tests\UnitTestCase;
 use Psr\Log\LoggerInterface;
 use Drupal\du_logging\Logger\FilteredLogger;
@@ -12,6 +13,28 @@ use Drupal\Core\Config\ConfigFactory;
  * @coversDefaultClass \Drupal\du_logging\Logger\FilteredLogger
  */
 class FilteredLoggerTest extends UnitTestCase {
+
+  private TranslationInterface $translation;
+  protected function setUp(): void {
+    parent::setUp();
+
+    $this->translation = $this->createStringTranslation();
+  }
+
+  /**
+   * Helper to build a mock TranslationInterface.
+   */
+  private function createStringTranslation(): TranslationInterface {
+    $translation = $this->createMock(TranslationInterface::class);
+    // Default: just return the original message.
+    $translation->method('translate')
+      ->willReturnCallback(static function ($message, array $context = []) {
+        // You can customize this if you need tokens/contexts later.
+        return $message;
+      });
+
+    return $translation;
+  }
 
   /**
    * Helper to build a mock ConfigFactory with given du_logging.settings values.
@@ -36,6 +59,9 @@ class FilteredLoggerTest extends UnitTestCase {
   }
 
   /**
+   * When filtering is disabled, a call to FilteredLogger::log() must call the inner
+   * logger’s log() once.
+   *
    * @covers ::log
    */
   public function testFilteringDisabledPassesThrough(): void {
@@ -49,11 +75,14 @@ class FilteredLoggerTest extends UnitTestCase {
       'patterns' => ['!/deprecated/i'],
     ]);
 
-    $logger = new FilteredLogger($inner, $configFactory);
+    $logger = new FilteredLogger($inner, $configFactory, $this->translation);
     $logger->log(RfcLogLevel::DEBUG, 'Any message', ['channel' => 'cron']);
   }
 
   /**
+   * With filtering enabled and only ERROR level allowed, an INFO log must not
+   * call the inner logger at all.
+   *
    * @covers ::log
    */
   public function testLevelFiltered(): void {
@@ -67,11 +96,13 @@ class FilteredLoggerTest extends UnitTestCase {
       'patterns' => [],
     ]);
 
-    $logger = new FilteredLogger($inner, $configFactory);
+    $logger = new FilteredLogger($inner, $configFactory, $this->translation);
     $logger->log(RfcLogLevel::INFO, 'Informational message');
   }
 
   /**
+   * With certain channels configured, logging to cron must not reach the inner logger.
+   *
    * @covers ::log
    */
   public function testChannelFiltered(): void {
@@ -85,11 +116,13 @@ class FilteredLoggerTest extends UnitTestCase {
       'patterns' => [],
     ]);
 
-    $logger = new FilteredLogger($inner, $configFactory);
+    $logger = new FilteredLogger($inner, $configFactory, $this->translation);
     $logger->log(RfcLogLevel::WARNING, 'Cron warning', ['channel' => 'cron']);
   }
 
   /**
+   * If the message matches a configured pattern (e.g. “deprecated”), it must not reach the inner logger.
+   *
    * @covers ::log
    */
   public function testPatternFiltered(): void {
@@ -103,11 +136,13 @@ class FilteredLoggerTest extends UnitTestCase {
       'patterns' => ['/deprecated function/i', '/^SkipMe:/'],
     ]);
 
-    $logger = new FilteredLogger($inner, $configFactory);
+    $logger = new FilteredLogger($inner, $configFactory, $this->translation);
     $logger->log(RfcLogLevel::NOTICE, 'Deprecated function call in module x');
   }
 
   /**
+   * When the level, channel, and message do not match any filter, the inner logger must be called once.
+   *
    * @covers ::log
    */
   public function testMessagePassesThroughWhenAllowed(): void {
@@ -121,11 +156,14 @@ class FilteredLoggerTest extends UnitTestCase {
       'patterns' => ['/noise/i'],
     ]);
 
-    $logger = new FilteredLogger($inner, $configFactory);
+    $logger = new FilteredLogger($inner, $configFactory, $this->translation);
     $logger->log(RfcLogLevel::WARNING, 'Clean message', ['channel' => 'allowed_channel']);
   }
 
   /**
+   * If filtering is enabled but no criteria are configured, the message should pass through and log()
+   * should be called once.
+   *
    * @covers ::log
    */
   public function testNoFilteringCriteriaConfigured(): void {
@@ -139,7 +177,7 @@ class FilteredLoggerTest extends UnitTestCase {
       'patterns' => [],
     ]);
 
-    $logger = new FilteredLogger($inner, $configFactory);
+    $logger = new FilteredLogger($inner, $configFactory, $this->translation);
     $logger->log(RfcLogLevel::INFO, 'Unfiltered message');
   }
 
