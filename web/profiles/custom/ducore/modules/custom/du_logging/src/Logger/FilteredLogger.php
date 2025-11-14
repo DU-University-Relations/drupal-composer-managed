@@ -4,6 +4,7 @@ namespace Drupal\du_logging\Logger;
 
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Logger\RfcLoggerTrait;
+use Drupal\Core\StringTranslation\TranslationInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -19,15 +20,21 @@ class FilteredLogger implements LoggerInterface {
 
   private ConfigFactory $configFactory;
 
+  private TranslationInterface $stringTranslation;
+
   /**
    * Constructs a FilteredLogger object.
    *
    * @param \Psr\Log\LoggerInterface $inner_logger
    *   The decorated logger service.
    */
-  public function __construct(LoggerInterface $inner_logger, ConfigFactory $config_factory) {
+  public function __construct(
+    LoggerInterface $inner_logger,
+    ConfigFactory $config_factory,
+    TranslationInterface $string_translation) {
     $this->innerLogger = $inner_logger;
     $this->configFactory = $config_factory;
+    $this->stringTranslation = $string_translation;
   }
 
   /**
@@ -78,8 +85,9 @@ class FilteredLogger implements LoggerInterface {
 
     // Check pattern filtering
     $patterns = $config->get('patterns') ?: [];
+    $rendered_message = (string) $this->stringTranslation->translate($message, $context);
     foreach ($patterns as $pattern) {
-      if (preg_match($pattern, $message)) {
+      if (preg_match($pattern, $rendered_message)) {
         return TRUE;
       }
     }

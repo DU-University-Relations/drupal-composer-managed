@@ -4,8 +4,9 @@ services:
     decorates: logger.dblog
     decoration_priority: 100
     arguments:
-      - '@logger.dblog_filter.inner'
+      - '@du_logging.dblog_filter.inner'
       - '@config.factory'
+      - '@string_translation'
     tags:
       - { name: logger }
 

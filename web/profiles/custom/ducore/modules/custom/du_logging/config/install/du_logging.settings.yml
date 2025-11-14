@@ -9,8 +9,7 @@ log_levels:
   - 6  # INFO
   - 7  # DEBUG
 message_types:
-  - 'php'
   - 'page not found'
 patterns:
   - '/deprecated/i'
-  - '/notice/i'
+  - '/CacheableAccessDeniedHttpException/i'
