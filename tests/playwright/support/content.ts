@@ -1,5 +1,4 @@
-// ckeditor.helpers.ts
-
+// These are a work-in-progress for helping with content creation, but not used on any test yet.
 import { Page, Locator } from '@playwright/test';
 
 /**
