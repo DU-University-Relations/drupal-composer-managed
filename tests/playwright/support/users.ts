@@ -1,17 +1,16 @@
 /**
- * Drupal Role Management Helper
+ * Drupal User Management Helper
  *
- * Provides type-safe access to Drupal user roles for testing.
- *
- * Usage:
- *   import { getRole, getAllRoles, hasRole } from '../support/roles';
- *
- *   const adminRole = getRole('administrator');
- *   const allRoles = getAllRoles();
+ * Provides type-safe access to Drupal users for testing.
  */
 
-import { roles, Role, RoleName } from '../data/test-roles';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {Role, RoleName, roles} from '../data/users/test-roles';
 import {BrowserContext, expect, Page} from "@playwright/test";
+import {getDataPath} from "@du_pw/support/files";
+
+const COOKIE_DIR = getDataPath('cookies');
 
 /**
  * Type guard to check if a string is a valid role name
@@ -155,6 +154,68 @@ export async function logOutViaUi(page: Page): Promise<void> {
 }
 
 /**
+ * Gets the cookie file path for a specific role
+ */
+function getCookiePath(role: Role): string {
+  return path.join(COOKIE_DIR, `${role.name}-cookies.json`);
+}
+
+/**
+ * Loads cookies from file and adds them to the context
+ */
+async function loadCookies(context: BrowserContext, role: Role): Promise<boolean> {
+  const cookiePath = getCookiePath(role);
+
+  try {
+    const cookiesString = await fs.readFile(cookiePath, 'utf-8');
+    const cookies = JSON.parse(cookiesString);
+    await context.addCookies(cookies);
+    return true;
+  } catch (error) {
+    console.error(`Failed to load cookies for role "${role.name}" from "${cookiePath}":`, error);
+    return false;
+  }
+}
+
+/**
+ * Saves cookies to file for future use
+ */
+async function saveCookies(context: BrowserContext, role: Role): Promise<void> {
+  await fs.mkdir(COOKIE_DIR, { recursive: true });
+  const cookies = await context.cookies();
+  await fs.writeFile(
+    getCookiePath(role),
+    JSON.stringify(cookies, null, 2),
+    'utf-8'
+  );
+}
+
+/**
+ * Logs in using saved cookies, falls back to form login if needed
+ */
+export async function logIn(page: Page, context: BrowserContext, role: Role): Promise<void> {
+  const cookiesLoaded = await loadCookies(context, role);
+
+  // No saved cookies, login via form and then save cookies for future use.
+  if (!cookiesLoaded) {
+    await logInViaForm(page, context, role);
+    await saveCookies(context, role);
+  }
+}
+
+/**
+ * Create a fresh anonymous Page (new isolated BrowserContext).
+ * @param sourceContext Existing test BrowserContext.
+ * @returns Anonymous Page in its own new BrowserContext.
+ */
+export async function createAnonSession(sourceContext: BrowserContext): Promise<Page> {
+  const browser = sourceContext.browser();
+  if (!browser) throw new Error('Browser not available from source context.');
+  const anonContext = await browser.newContext();
+  return await anonContext.newPage();
+}
+
+/**
  * Default export for convenience
  */
 export default {
@@ -168,4 +229,6 @@ export default {
   ROLES,
   logInViaForm,
   logOutViaUi,
+  logIn,
+  createAnonSession
 };
