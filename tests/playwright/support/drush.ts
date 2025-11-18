@@ -25,7 +25,7 @@ export function runDrushCommand(command: string): string {
     const output = execSync(fullCommand, { encoding: 'utf8' }).toString();
     return output.trim();
   } catch (error) {
-    console.error(`Error running drush command: ${fullCommand}`);
+    console.error(`Error running drush command: ${fullCommand}\nError details:`, error && (error.message || error));
     throw error;
   }
 }
