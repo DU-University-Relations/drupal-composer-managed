@@ -1,0 +1,9 @@
+services:
+  web:
+    environment:
+      # DDEV injects this variable automatically, so it always matches your current URL.
+      - SIMPLETEST_BASE_URL=${DDEV_PRIMARY_URL}
+      # The DB credentials in DDEV are standard, so hardcoding this is safe/stable.
+      - SIMPLETEST_DB=mysql://db:db@db/db
+      - BROWSERTEST_OUTPUT_DIRECTORY=/tmp
+      - SYMFONY_DEPRECATIONS_HELPER=weak
