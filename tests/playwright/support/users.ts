@@ -172,6 +172,7 @@ async function loadCookies(context: BrowserContext, role: Role): Promise<boolean
     await context.addCookies(cookies);
     return true;
   } catch (error) {
+    console.error(`Failed to load cookies for role "${role.name}" from "${cookiePath}":`, error);
     return false;
   }
 }
