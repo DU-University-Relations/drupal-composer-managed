@@ -1,9 +1,7 @@
 import { test, expect } from '@du_pw/test';
-import { faker } from '@faker-js/faker';
 
-import { getRole , logIn, createAnonSession, logInViaForm} from "@du_pw/support/users";
+import { getRole , logIn, createAnonSession} from "@du_pw/support/users";
 import {runDrushCommand} from "@du_pw/support/drush";
-import {run} from "node:test";
 
 test.describe('@du_logging - Log filtering tests', () => {
   const administrator = getRole('administrator');
