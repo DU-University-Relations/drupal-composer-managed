@@ -1,0 +1,7 @@
+name: 'DU Logging'
+type: module
+description: 'Handles custom logging for DU sites'
+package: DU
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:dblog

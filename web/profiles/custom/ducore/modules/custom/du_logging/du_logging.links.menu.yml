@@ -1,0 +1,6 @@
+du_logging.settings:
+  title: 'Filtered Logger Settings'
+  description: 'Configure the filtered logger settings.'
+  parent: system.admin_config_development
+  route_name: du_logging.settings
+  weight: 0

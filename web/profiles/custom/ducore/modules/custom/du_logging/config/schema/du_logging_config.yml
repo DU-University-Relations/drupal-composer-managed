@@ -1,0 +1,24 @@
+du_logging.settings:
+  type: config_object
+  label: 'DU Logging settings'
+  mapping:
+    enabled:
+      type: boolean
+      label: 'Enable filtered logging'
+    log_levels:
+      type: sequence
+      label: 'Allowed log levels'
+      sequence:
+        type: integer
+    message_types:
+      type: sequence
+      label: 'Message types to filter'
+      sequence:
+        type: string
+        label: 'Message type'
+    patterns:
+      type: sequence
+      label: 'Message patterns to filter'
+      sequence:
+        type: string
+        label: 'Pattern'
