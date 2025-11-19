@@ -18,8 +18,14 @@ class FilteredLogger implements LoggerInterface {
    */
   protected LoggerInterface $innerLogger;
 
+  /**
+   * The config factory.
+   */
   private ConfigFactory $configFactory;
 
+  /**
+   * The string translation service.
+   */
   private TranslationInterface $stringTranslation;
 
   /**
@@ -77,13 +83,13 @@ class FilteredLogger implements LoggerInterface {
       return TRUE;
     }
 
-    // Check message type filtering
+    // Check message type filtering.
     $message_types = $config->get('message_types') ?: [];
     if (!empty($context['channel']) && in_array($context['channel'], $message_types)) {
       return TRUE;
     }
 
-    // Check pattern filtering
+    // Check pattern filtering.
     $patterns = $config->get('patterns') ?: [];
     $rendered_message = (string) $this->stringTranslation->translate($message, $context);
     foreach ($patterns as $pattern) {
