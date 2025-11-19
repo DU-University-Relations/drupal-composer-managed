@@ -1,6 +1,6 @@
 import { test, expect } from '@du_pw/test';
 
-import { getRole , logIn, createAnonSession} from "@du_pw/support/users";
+import { getRole, logIn, createAnonSession} from "@du_pw/support/users";
 import {drush} from "@du_pw/support/drush";
 
 test.describe('@du_logging - Log filtering tests', () => {
