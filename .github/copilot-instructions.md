@@ -52,7 +52,7 @@ The repository has three main test suites:
 3. **Playwright E2E Tests** (`.github/workflows/playwright.yml`)
    - Located in `tests/playwright/e2e/`
    - Tests authentication, content creation, and user workflows
-   - Run: `npm test` (requires Drupal site running)
+   - Run: `npx playwright test` (requires Drupal site running)
    - See `tests/playwright/docs/writing-tests.md` for test writing guidelines
 
 ### Code Modifications
@@ -83,7 +83,7 @@ composer install --no-interaction
 npm run generate-roles
 
 # Run Playwright tests (requires running Drupal site)
-npm test
+npx playwright test
 ```
 
 ### Workflow Integration
