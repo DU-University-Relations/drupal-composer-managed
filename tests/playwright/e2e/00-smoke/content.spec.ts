@@ -10,11 +10,9 @@ test.describe('@smoke - Basic Page Tests', () => {
   const h1_text = faker.lorem.words(3);
   const body_text = faker.lorem.paragraphs(1);
 
-  test.only('Create basic page', async ({ page, context }) => {
+  test('Create basic page', async ({ page, context }) => {
     await logIn(page, context, site_admin);
-    // await page.goto('/node/add/page');
-    // Intentionally fail test to check webhook posting.
-    await page.goto('/no/page/exists');
+    await page.goto('/node/add/page');
 
     await page.getByLabel('Title', {exact: true}).fill(page_title);
     await page.getByLabel('Alternative H1').fill(h1_text);
