@@ -45,3 +45,48 @@ jobs:
           name: playwright-report
           path: playwright-report
           if-no-files-found: ignore
+
+      - name: Notify MS Teams on failure
+        if: failure()
+        run: |
+          curl -H "Content-Type: application/json" -d '{
+            "@type": "MessageCard",
+            "@context": "https://schema.org/extensions",
+            "summary": "Playwright Tests Failed",
+            "themeColor": "FF0000",
+            "title": "❌ Playwright Tests Failed",
+            "sections": [{
+              "activityTitle": "Test Run Failure",
+              "activitySubtitle": "${{ github.repository }}",
+              "facts": [
+                {
+                  "name": "Repository:",
+                  "value": "${{ github.repository }}"
+                },
+                {
+                  "name": "Branch:",
+                  "value": "${{ github.ref_name }}"
+                },
+                {
+                  "name": "Commit:",
+                  "value": "${{ github.sha }}"
+                },
+                {
+                  "name": "Triggered by:",
+                  "value": "${{ github.actor }}"
+                },
+                {
+                  "name": "Workflow:",
+                  "value": "${{ github.workflow }}"
+                }
+              ]
+            }],
+            "potentialAction": [{
+              "@type": "OpenUri",
+              "name": "View Failed Run",
+              "targets": [{
+                "os": "default",
+                "uri": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              }]
+            }]
+          }' "${{ secrets.MS_TEAMS_FAILED_TEST_RUN_WEBHOOK_URL }}"
