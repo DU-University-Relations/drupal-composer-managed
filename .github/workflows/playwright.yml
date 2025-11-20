@@ -50,43 +50,54 @@ jobs:
         if: failure()
         run: |
           curl -H "Content-Type: application/json" -d '{
-            "@type": "MessageCard",
-            "@context": "https://schema.org/extensions",
-            "summary": "Playwright Tests Failed",
-            "themeColor": "FF0000",
-            "title": "❌ Playwright Tests Failed",
-            "sections": [{
-              "activityTitle": "Test Run Failure",
-              "activitySubtitle": "${{ github.repository }}",
-              "facts": [
-                {
-                  "name": "Repository:",
-                  "value": "${{ github.repository }}"
-                },
-                {
-                  "name": "Branch:",
-                  "value": "${{ github.ref_name }}"
-                },
-                {
-                  "name": "Commit:",
-                  "value": "${{ github.sha }}"
-                },
-                {
-                  "name": "Triggered by:",
-                  "value": "${{ github.actor }}"
-                },
-                {
-                  "name": "Workflow:",
-                  "value": "${{ github.workflow }}"
-                }
-              ]
-            }],
-            "potentialAction": [{
-              "@type": "OpenUri",
-              "name": "View Failed Run",
-              "targets": [{
-                "os": "default",
-                "uri": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-              }]
+            "type": "message",
+            "attachments": [{
+              "contentType": "application/vnd.microsoft.card.adaptive",
+              "content": {
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                "type": "AdaptiveCard",
+                "version": "1.4",
+                "body": [
+                  {
+                    "type": "TextBlock",
+                    "text": "❌ Playwright Tests Failed",
+                    "weight": "Bolder",
+                    "size": "Large",
+                    "color": "Attention"
+                  },
+                  {
+                    "type": "FactSet",
+                    "facts": [
+                      {
+                        "title": "Repository:",
+                        "value": "${{ github.repository }}"
+                      },
+                      {
+                        "title": "Branch:",
+                        "value": "${{ github.ref_name }}"
+                      },
+                      {
+                        "title": "Commit:",
+                        "value": "${{ github.sha }}"
+                      },
+                      {
+                        "title": "Triggered by:",
+                        "value": "${{ github.actor }}"
+                      },
+                      {
+                        "title": "Workflow:",
+                        "value": "${{ github.workflow }}"
+                      }
+                    ]
+                  }
+                ],
+                "actions": [
+                  {
+                    "type": "Action.OpenUrl",
+                    "title": "View Failed Run",
+                    "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                  }
+                ]
+              }
             }]
           }' "${{ secrets.MS_TEAMS_FAILED_TEST_RUN_WEBHOOK_URL }}"
