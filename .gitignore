@@ -115,3 +115,6 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 /test-results/
+
+# Site meta file used in Quicksilver scripts.
+private/scripts/site_meta.json

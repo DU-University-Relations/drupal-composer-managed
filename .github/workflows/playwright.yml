@@ -29,8 +29,17 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      - name: Run bootstrap script
-        run: bash scripts/bootstrap-ci.sh
+      - name: Prepare environment (CI)
+        run: |
+          # Install dependencies and set up the Drupal site.
+          # DDEV already started in CI via DDEV setup action.
+          ddev composer install --no-interaction --prefer-dist
+          ddev drush si ducore -y
+            
+          # Install Node.js dependencies and set up functional testing.
+          npm ci
+          ddev drush en du_functional_testing -y
+          npm run generate-roles
 
       - name: Install Playwright browsers (CI)
         run: npx playwright install --with-deps
