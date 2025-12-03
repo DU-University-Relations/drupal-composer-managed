@@ -8,17 +8,17 @@ import { execSync } from 'child_process';
  *
  * @example
  * // Enable a module
- * runDrushCommand('en a_module -y');
+ * drush('en a_module -y');
  *
  * @example
  * // Clear cache
- * runDrushCommand('cr');
+ * drush('cr');
  *
  * @example
  * // Get config value
- * const output = runDrushCommand('config:get system.site name');
+ * const output = drush('config:get system.site name');
  */
-export function runDrushCommand(command: string): string {
+export function drush(command: string): string {
   const fullCommand = `ddev drush ${command}`;
 
   try {

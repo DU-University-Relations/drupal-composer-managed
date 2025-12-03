@@ -2,7 +2,7 @@ import { test, expect } from '@du_pw/test';
 import { faker } from '@faker-js/faker';
 
 import {createAnonSession, getRole, logIn} from "@du_pw/support/users";
-import {runDrushCommand} from "@du_pw/support/drush";
+import {drush} from "@du_pw/support/drush";
 
 test.describe('@smoke - Basic Page Tests', () => {
   const site_admin = getRole('site_admin');
@@ -43,6 +43,6 @@ test.describe('@smoke - Basic Page Tests', () => {
 
   test.afterAll(async () => {
     // Delete test content.
-    runDrushCommand(`du:delete-content --title="${page_title}"`);
+    drush(`du:delete-content --title="${page_title}"`);
   });
 });
