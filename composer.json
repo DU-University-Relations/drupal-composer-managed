@@ -407,7 +407,7 @@
             "rm -rf vendor/simplesamlphp/simplesamlphp/metadata && ln -sf ../../../private/simplesamlphp/metadata vendor/simplesamlphp/simplesamlphp/metadata",
             "rm -rf vendor/simplesamlphp/simplesamlphp/cert && ln -sf ../../../private/simplesamlphp/cert vendor/simplesamlphp/simplesamlphp/cert",
             "mkdir -p web/libraries/ckeditor5 && cp -r private/ckeditor5/* web/libraries/ckeditor5/",
-            "mkdir -p web/private/scripts/pantheon && cp -r private/scripts/pantheon* web/private/scripts/pantheon"
+            "mkdir -p web/private/scripts/pantheon && cp -r private/scripts/pantheon/* web/private/scripts/pantheon"
         ]
     },
     "config": {
