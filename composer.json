@@ -398,13 +398,15 @@
             "rm -rf vendor/simplesamlphp/simplesamlphp/config && ln -sf ../../../private/simplesamlphp/config vendor/simplesamlphp/simplesamlphp/config",
             "rm -rf vendor/simplesamlphp/simplesamlphp/metadata && ln -sf ../../../private/simplesamlphp/metadata vendor/simplesamlphp/simplesamlphp/metadata",
             "rm -rf vendor/simplesamlphp/simplesamlphp/cert && ln -sf ../../../private/simplesamlphp/cert vendor/simplesamlphp/simplesamlphp/cert",
-            "mkdir -p web/libraries/ckeditor5 && cp -r private/ckeditor5/* web/libraries/ckeditor5/"
+            "mkdir -p web/libraries/ckeditor5 && cp -r private/ckeditor5/* web/libraries/ckeditor5/",
+            "mkdir -p web/private/scripts && cp -r private/scripts/* web/private/scripts/"
         ],
         "post-install-cmd": [
             "rm -rf vendor/simplesamlphp/simplesamlphp/config && ln -sf ../../../private/simplesamlphp/config vendor/simplesamlphp/simplesamlphp/config",
             "rm -rf vendor/simplesamlphp/simplesamlphp/metadata && ln -sf ../../../private/simplesamlphp/metadata vendor/simplesamlphp/simplesamlphp/metadata",
             "rm -rf vendor/simplesamlphp/simplesamlphp/cert && ln -sf ../../../private/simplesamlphp/cert vendor/simplesamlphp/simplesamlphp/cert",
-            "mkdir -p web/libraries/ckeditor5 && cp -r private/ckeditor5/* web/libraries/ckeditor5/"
+            "mkdir -p web/libraries/ckeditor5 && cp -r private/ckeditor5/* web/libraries/ckeditor5/",
+            "mkdir -p web/private/scripts && cp -r private/scripts/* web/private/scripts/"
         ]
     },
     "config": {
