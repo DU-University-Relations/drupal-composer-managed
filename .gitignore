@@ -117,4 +117,4 @@ node_modules/
 /test-results/
 
 # Site meta file used in Quicksilver scripts.
-private/scripts/site_meta.json
+web/sites/default/site_meta.json
