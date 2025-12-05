@@ -5,7 +5,7 @@
  * Sends Autopilot VRT Quicksilver hook data to MS Teams.
  */
 
-$webhook_url = $_ENV['AUTOPILOT_WEBHOOK_URL'] ?? getenv('AUTOPILOT_WEBHOOK_URL');
+$webhook_url = pantheon_get_secret('AUTOPILOT_NOTIFICATION_URL');
 
 if (empty($webhook_url)) {
   die('Missing AUTOPILOT_WEBHOOK_URL environment variable. Aborting!');
@@ -23,16 +23,9 @@ $site_name = $_ENV['PANTHEON_SITE_NAME'];
 $environment = $_ENV['PANTHEON_ENVIRONMENT'];
 $full_vrt_url = "https://dashboard.pantheon.io/" . $vrt_result_url;
 
-$is_pass = ($status === 'pass');
+$is_pass = ($status === 'tolerable' || $status === 'pass' );
 $emoji = $is_pass ? '✅' : '❌';
 $color = $is_pass ? 'Good' : 'Attention';
-
-// Build update list as plain text for Teams.
-$update_lines = array_map(
-  fn($ext) => "• {$ext['title']}: {$ext['version']} → {$ext['update_version']}",
-  $updates_info['extension_list'] ?? []
-);
-$update_list_text = implode("\n", $update_lines);
 
 $message_data = [
   'type' => 'message',
@@ -67,7 +60,7 @@ $message_data = [
           ],
           [
             'type' => 'TextBlock',
-            'text' => $update_list_text,
+            'text' => print_r($updates_info, true),
             'wrap' => true,
           ],
         ],

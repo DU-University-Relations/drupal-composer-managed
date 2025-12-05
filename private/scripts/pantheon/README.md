@@ -18,22 +18,27 @@ The automation scripts need access to Pantheon secrets, which are stored in the 
 [Pantheon Secrets documentation](https://ducloudwiki.atlassian.net/wiki/spaces/DS/pages/1070104590/Pantheon+Secrets#Using-Pantheon-Secrets-in-DDEV)
 for more information on how to work with secrets.
 
+## Site Metadata File
+
+Some scripts need to know the site's metadata, which is stored in `sites/default/site_meta.json`.
+Please add that to your site repository in order to use these scripts.
+
 ## Automation Workflows
 
 There are several workflows that can be triggered by configuring `pantheon.yml` files in the
 site codebases.
 
-## After Database Clone Operations
+## Prepare Testing Environment
 
-It is useful to target the database clone operation to enable testing modules amongst other
-things.
+It is useful to prepare the test environment before running functional tests and the database 
+clone operation is a good web operation to target.
 
 Actions performed:
 - Enables functional testing modules
 - Sanitizes the database
 
 Pre-requisites:
-- None
+- ...possibly add tables to be sanitized here
 
 ```yaml
 workflows:
@@ -41,10 +46,10 @@ workflows:
     after:
       - type: webphp
         description: Prepare testing environment
-        script: private/scripts/pantheon/after_database_clone_actions.php
+        script: private/scripts/pantheon/prepare_testing_environment.php
 ```
 
-## After Autopilot Notification
+## Send Autopilot Notification
 
 You can send a notification to MS Teams after an autopilot operation to let the team know that
 Autopilot ran and either succeeded or failed.
@@ -60,26 +65,27 @@ workflows:
   autopilot_vrt:
     after:
       - type: webphp
-        description: Autopilot after
-        script: private/scripts/pantheon/after_autopilot_notification.php
+        description: Send Autopilot run notification
+        script: private/scripts/pantheon/send_autopilot_notification.php
 ```
 
-## After Clear Cache Actions
+## Warm Critical Paths
 
-The `cache_clear` hook runs after several Pantheon web operations, and it is useful to do things
-like warm the cache for critical pages.
+After web operations like clearing the cache, it is useful to warm the cache for critical pages 
+so users don't experience slow load times.
 
 Actions performed:
 - Warms cache of critical pages
 
 Pre-requisites:
-- `$_ENV['VANITY_DOMAIN']` needs to be set via Terminus so the live site can be targeted.
+- `site_meta.json` needs to be present in the codebase and include an array of critical pages.
+  - Example: `$site_meta['critical_paths'] = ['/about', '/contact'];`
 
 ```yaml
 workflows:
   autopilot_vrt:
     after:
       - type: webphp
-        description: Autopilot after
-        script: private/scripts/pantheon/after_autopilot_notification.php
+        description: Warm critical paths cache
+        script: private/scripts/pantheon/warm_critical_paths.php
 ```

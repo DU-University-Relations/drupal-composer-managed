@@ -3,8 +3,8 @@
  * Quicksilver Script: Warm critical cache pages.
  */
 
-// 1. Load paths from site_meta.json (One level up from this script)
-$json_path = __DIR__ . '/../site_meta.json';
+// 1. Load paths from site_meta.json.
+$json_path = $_ENV['DOCROOT'] . '/sites/default/site_meta.json';
 
 if (!file_exists($json_path)) {
   echo "Skipping: site_meta.json not found in " . __DIR__ . "\n";
@@ -23,9 +23,8 @@ if (empty($paths)) {
 $env = $_ENV['PANTHEON_ENVIRONMENT'];
 $site_name = $_ENV['PANTHEON_SITE_NAME'];
 
-if ($env === 'live' && !empty($_ENV['VANITY_DOMAIN'])) {
-  // Must contain the full URL (e.g., https://www.du.edu)
-  $base_url = $_ENV['VANITY_DOMAIN'];
+if ($env === 'live' && !empty($site_meta['live_url'])) {
+  $base_url = $site_meta['custom_domains']['live'];
 } else {
   // Default Pantheon internal URL for dev/test/multidevs
   $base_url = 'https://' . $env . '-' . $site_name . '.pantheonsite.io';
