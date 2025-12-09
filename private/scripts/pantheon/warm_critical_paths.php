@@ -7,7 +7,7 @@
 $json_path = $_ENV['DOCROOT'] . '/sites/default/site_meta.json';
 
 if (!file_exists($json_path)) {
-  echo "Skipping: site_meta.json not found in " . __DIR__ . "\n";
+  echo "Skipping: site_meta.json not found at " . $json_path . "\n";
   exit;
 }
 
