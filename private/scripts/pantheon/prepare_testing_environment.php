@@ -8,7 +8,7 @@
  */
 
 // The clone_database may be triggered on any environment, but we only want
-// to performn these operations on non-live environments.
+// to perform these operations on non-live environments.
 if (isset($_POST['environment']) && $_POST['environment'] != 'live') {
 
   echo "Enabling functional testing module.\n";
