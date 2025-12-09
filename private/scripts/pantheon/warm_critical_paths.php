@@ -23,8 +23,8 @@ if (empty($paths)) {
 $env = $_ENV['PANTHEON_ENVIRONMENT'];
 $site_name = $_ENV['PANTHEON_SITE_NAME'];
 
-if ($env === 'live' && !empty($site_meta['live_url'])) {
-  $base_url = $site_meta['custom_domains']['live'];
+if ($env === 'live' && !empty($site_meta['domains']['live'])) {
+  $base_url = $site_meta['domains']['live'];
 } else {
   // Default Pantheon internal URL for dev/test/multidevs
   $base_url = 'https://' . $env . '-' . $site_name . '.pantheonsite.io';

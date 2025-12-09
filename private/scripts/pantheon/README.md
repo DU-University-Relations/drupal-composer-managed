@@ -1,11 +1,12 @@
 # Pantheon Quicksilver Automation Scripts
 
 Pantheon has specific rules on what directories are kept private to the outside world, and there
-is no reason for the scripts to be accessible outside of the Pantheon server environment.
+is no reason for the scripts to be accessible outside the Pantheon server environment.
 
 `web` is the docroot, and normally we would place the scripts in `web/private/scripts`. However,
 since Composer manages the web directory, we have to store the scripts in `private/scripts` and
-have a post install command copy the scripts to `web/private/scripts`.
+have a post install command copy the scripts to `web/private/scripts`. We keep Pantheon-specific
+scripts in `private/scripts/pantheon`.
 
 ## DU Core Profile Scripts vs. Site Configuration
 
@@ -21,7 +22,20 @@ for more information on how to work with secrets.
 ## Site Metadata File
 
 Some scripts need to know the site's metadata, which is stored in `sites/default/site_meta.json`.
-Please add that to your site repository in order to use these scripts.
+Please add that to your site repository to use these scripts.
+
+Example site metadata file:
+```json
+{
+  "critical_paths": [
+    "/about",
+    "/contact"
+    ],
+  "domains":  {
+    "live": "https://www.du.edu"
+  }
+}
+```
 
 ## Automation Workflows
 
@@ -30,7 +44,7 @@ site codebases.
 
 ## Prepare Testing Environment
 
-It is useful to prepare the test environment before running functional tests and the database 
+It is useful to prepare the test environment before running functional tests, and the database 
 clone operation is a good web operation to target.
 
 Actions performed:
@@ -75,11 +89,12 @@ After web operations like clearing the cache, it is useful to warm the cache for
 so users don't experience slow load times.
 
 Actions performed:
-- Warms cache of critical pages
+- Warms cache for critical pages
 
 Pre-requisites:
 - `site_meta.json` needs to be present in the codebase and include an array of critical pages.
-  - Example: `$site_meta['critical_paths'] = ['/about', '/contact'];`
+  - Critical Paths: `$site_meta['critical_paths'] = ['/about', '/contact'];`
+  - Live domain: `$site_meta['domains']['live'] = 'https://www.du.edu'`
 
 ```yaml
 workflows:

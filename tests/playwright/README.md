@@ -16,7 +16,8 @@ Project-specific testing documentation:
 
 ## Testing Setup
 
-The following commands should be run to set up the testing environment.
+The `./private/scripts/bootstrap-local.sh` script will setup the environment for running the tests,
+but you can look at the commands in the script and run them manually if you need to.
 
 ```bash
 # Install testing dependencies.

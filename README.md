@@ -23,7 +23,7 @@ https://ducloudwiki.atlassian.net/wiki/spaces/DS/pages/564690946/DUCore+-+Featur
 ## Local Setup
 
 DDEV is used to manage the local development environment. You can start it up with the following
-commands:
+commands, or by running `./private/scripts/bootstrap-local.sh`:
 
 ```shell
 # Install dependencies and set up the Drupal site.

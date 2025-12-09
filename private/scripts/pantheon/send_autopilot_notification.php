@@ -23,7 +23,7 @@ $site_name = $_ENV['PANTHEON_SITE_NAME'];
 $environment = $_ENV['PANTHEON_ENVIRONMENT'];
 $full_vrt_url = "https://dashboard.pantheon.io/" . $vrt_result_url;
 
-$is_pass = ($status === 'tolerable' || $status === 'pass' );
+$is_pass = ($status == 'tolerable' || $status == 'pass' );
 $emoji = $is_pass ? '✅' : '❌';
 $color = $is_pass ? 'Good' : 'Attention';
 
