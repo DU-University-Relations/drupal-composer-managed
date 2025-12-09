@@ -315,7 +315,8 @@
         "desandro/masonry": "^3.3.1",
         "kenwheeler/slick": "^1.7.1",
         "drupal/config_pr": "^2.0@beta",
-        "northernco/ckeditor5-anchor-drupal": "^0.5.0"
+        "northernco/ckeditor5-anchor-drupal": "^0.5.0",
+        "ext-curl": "*"
     },
     "require-dev": {
         "drupal/core-dev": "^10.5",
@@ -399,13 +400,15 @@
             "rm -rf vendor/simplesamlphp/simplesamlphp/config && ln -sf ../../../private/simplesamlphp/config vendor/simplesamlphp/simplesamlphp/config",
             "rm -rf vendor/simplesamlphp/simplesamlphp/metadata && ln -sf ../../../private/simplesamlphp/metadata vendor/simplesamlphp/simplesamlphp/metadata",
             "rm -rf vendor/simplesamlphp/simplesamlphp/cert && ln -sf ../../../private/simplesamlphp/cert vendor/simplesamlphp/simplesamlphp/cert",
-            "mkdir -p web/libraries/ckeditor5 && cp -r private/ckeditor5/* web/libraries/ckeditor5/"
+            "mkdir -p web/libraries/ckeditor5 && cp -r private/ckeditor5/* web/libraries/ckeditor5/",
+            "mkdir -p web/private/scripts/pantheon && cp -r private/scripts/pantheon/* web/private/scripts/pantheon"
         ],
         "post-install-cmd": [
             "rm -rf vendor/simplesamlphp/simplesamlphp/config && ln -sf ../../../private/simplesamlphp/config vendor/simplesamlphp/simplesamlphp/config",
             "rm -rf vendor/simplesamlphp/simplesamlphp/metadata && ln -sf ../../../private/simplesamlphp/metadata vendor/simplesamlphp/simplesamlphp/metadata",
             "rm -rf vendor/simplesamlphp/simplesamlphp/cert && ln -sf ../../../private/simplesamlphp/cert vendor/simplesamlphp/simplesamlphp/cert",
-            "mkdir -p web/libraries/ckeditor5 && cp -r private/ckeditor5/* web/libraries/ckeditor5/"
+            "mkdir -p web/libraries/ckeditor5 && cp -r private/ckeditor5/* web/libraries/ckeditor5/",
+            "mkdir -p web/private/scripts/pantheon && cp -r private/scripts/pantheon/* web/private/scripts/pantheon"
         ]
     },
     "config": {
