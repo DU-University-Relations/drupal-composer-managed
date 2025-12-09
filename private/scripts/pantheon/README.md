@@ -72,7 +72,7 @@ Actions performed:
 - Sends a notification to MS Teams
 
 Pre-requisites:
-- `$_ENV['AUTOPILOT_WEBHOOK_URL']` needs to be set via Terminus.
+- `$_ENV['AUTOPILOT_NOTIFICATION_URL']` needs to be set via Terminus.
 
 ```yaml
 workflows:
