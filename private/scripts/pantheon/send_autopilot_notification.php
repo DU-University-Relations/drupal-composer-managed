@@ -8,7 +8,7 @@
 $webhook_url = pantheon_get_secret('AUTOPILOT_NOTIFICATION_URL');
 
 if (empty($webhook_url)) {
-  die('Missing AUTOPILOT_WEBHOOK_URL environment variable. Aborting!');
+  die('Missing AUTOPILOT_NOTIFICATION_URL environment variable. Aborting!');
 }
 
 if (empty($_POST['updates_info']) || empty($_POST['vrt_status']) || empty($_POST['vrt_result_url'])) {
