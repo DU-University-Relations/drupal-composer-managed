@@ -91,11 +91,23 @@ Any support files used by the tests should be stored here.
 - `files.ts` - Support for working with files.
 - `users.ts` - Use this for working with users in tests including login/logout methods.
 
-## Todos
+## Testing Live Pantheon Sites
 
-These would be good things to add to the tests:
+In order to help with testing on Pantheon, you can use this test suite to target runs against 
+a Pantheon site. 
 
-- [ ] Implement cookie-based login https://medium.com/automated-monotony/using-playwright-cookies-to-bypass-authentication-b5eb29b35c73
-- [ ] Possibly move bootstrap scripts to DDEV commands
-- [ ] Add the ability to run drush commands via the support helper files
-- [ ] Stop CI run on first test failure
+Tests tagged with `@d9` will run against a D9 site, and since CKEditor 5 is enabled on the D9 
+sites, the same test helpers can be used for testing the D10 profile.
+
+You can run the tests against a Pantheon site by setting the `BASE_URL` environment variable to 
+the site's URL.
+
+```bash
+BASE_URL="https://www-du-core.ddev.site/" npx playwright test --grep @d9
+```
+
+### Run Tests Against All Dev/Test Sites
+
+Before a deployment, it can be useful to run the tests against all the Dev or Test sites.
+
+
