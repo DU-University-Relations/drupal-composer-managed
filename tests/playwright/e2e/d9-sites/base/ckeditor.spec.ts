@@ -1,8 +1,7 @@
 import { test, expect } from '@du_pw/test';
 import { faker } from '@faker-js/faker';
 
-import {createAnonSession, getRole, logIn} from "@du_pw/support/users";
-import {drush} from "@du_pw/support/drush";
+import {getRole, logIn} from "@du_pw/support/users";
 import {verifyCKEditorPluginsVisible} from "@du_pw/support/content";
 
 test.describe('@d9 @CKE - Basic CKEditor Tests', () => {
