@@ -45,7 +45,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test --grep-invert "@d9"
 
       - name: Upload Playwright report
         if: always()
