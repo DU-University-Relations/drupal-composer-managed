@@ -108,6 +108,19 @@ BASE_URL="https://www-du-core.ddev.site/" npx playwright test --grep @d9
 
 ### Run Tests Against All Dev/Test Sites
 
-Before a deployment, it can be useful to run the tests against all the Dev or Test sites.
+Before a deployment, it can be useful to run the tests against all the Dev or Test sites. To 
+make the sites more like production, some commands need to be run to sync the database and turn 
+on QA features.
+
+```bash
+cd tests/playwright/scripts
+
+# Sync db and enable QA features for all dev sites.
+./sync-db-from-live.sh dev
+./enable-qa-features.sh dev
+
+# Run tests tagged "@d9" against all dev sites.
+./test-sites.sh @d9 dev
+```
 
 
