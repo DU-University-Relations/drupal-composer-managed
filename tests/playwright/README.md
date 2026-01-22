@@ -100,10 +100,14 @@ Tests tagged with `@d9` will run against a D9 site, and since CKEditor 5 is enab
 sites, the same test helpers can be used for testing the D10 profile.
 
 You can run the tests against a Pantheon site by setting the `BASE_URL` environment variable to 
-the site's URL.
+the site's URL, but make sure that the QA features are enabled on the site.
 
 ```bash
-BASE_URL="https://www-du-core.ddev.site/" npx playwright test --grep @d9
+# Enable QA features on the Pantheon site.
+terminus drush "du-core.dev" -- en du_functional_testing -y
+
+# Run tests for D9 site on the Pantheon.
+BASE_URL="https://dev-du-core.pantheonsite.io/" npx playwright test --grep @d9
 ```
 
 ### Run Tests Against All Dev/Test Sites
