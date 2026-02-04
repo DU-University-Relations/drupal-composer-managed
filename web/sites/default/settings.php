@@ -88,3 +88,8 @@ $termly_key = function_exists('pantheon_get_secret') ? (pantheon_get_secret('ter
 if (!empty($termly_key)) {
   $config['termly.settings']['site_key'] = $termly_key;  
 }
+
+/**
+ * Enable state cache (default in Drupal 11).
+ */
+$settings['state_cache'] = TRUE;
