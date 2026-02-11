@@ -6,7 +6,7 @@
     "generate-roles": "ts-node tests/playwright/scripts/generate-role-data.ts"
   },
   "devDependencies": {
-    "@faker-js/faker": "^10.2.0",
+    "@faker-js/faker": "^10.3.0",
     "@playwright/test": "^1.57.0",
     "@types/node": "^25.0.9",
     "ts-node": "^10.9.2"
