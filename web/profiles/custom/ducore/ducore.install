@@ -654,3 +654,10 @@ function ducore_update_9522() {
     $config->set('site_key', '')->save(TRUE); 
   }
 }
+
+/**
+ * Enable page_cache_exclusion module 
+ */
+function ducore_update_9523() {
+  \Drupal::service('module_installer')->install(['page_cache_exclusion'], TRUE);
+}
